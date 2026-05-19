@@ -1,17 +1,17 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 520 260" fill="none">
   <defs>
-    <!-- Main infinity gradient: deep blue → cyan -->
+    <!-- Main infinity gradient: deep gold → light gold -->
     <linearGradient id="infinityGrad" x1="0" y1="0" x2="520" y2="0" gradientUnits="userSpaceOnUse">
-      <stop offset="0%"   stop-color="#1a4fd8"/>
-      <stop offset="40%"  stop-color="#2a7aef"/>
-      <stop offset="70%"  stop-color="#00b4d8"/>
-      <stop offset="100%" stop-color="#00d4e8"/>
+      <stop offset="0%"   stop-color="#8a6218"/>
+      <stop offset="35%"  stop-color="#c9a84c"/>
+      <stop offset="65%"  stop-color="#e8c870"/>
+      <stop offset="100%" stop-color="#c9a84c"/>
     </linearGradient>
     <!-- Inner stroke gradient -->
     <linearGradient id="innerGrad" x1="0" y1="0" x2="520" y2="0" gradientUnits="userSpaceOnUse">
-      <stop offset="0%"   stop-color="#4f9fff"/>
-      <stop offset="50%"  stop-color="#38d4f0"/>
-      <stop offset="100%" stop-color="#80eeff"/>
+      <stop offset="0%"   stop-color="#e8c870"/>
+      <stop offset="50%"  stop-color="#f5dfa0"/>
+      <stop offset="100%" stop-color="#e8c870"/>
     </linearGradient>
     <!-- Glow filter -->
     <filter id="glow" x="-30%" y="-30%" width="160%" height="160%">
@@ -20,12 +20,10 @@
     </filter>
     <filter id="softglow" x="-40%" y="-40%" width="180%" height="180%">
       <feGaussianBlur stdDeviation="8" result="blur"/>
-      <feColorMatrix in="blur" type="matrix" values="0 0 0 0 0.1  0 0 0 0 0.7  0 0 0 0 1  0 0 0 0.4 0" result="colorBlur"/>
+      <feColorMatrix in="blur" type="matrix" values="0 0 0 0 0.78  0 0 0 0 0.58  0 0 0 0 0.18  0 0 0 0.45 0" result="colorBlur"/>
       <feMerge><feMergeNode in="colorBlur"/><feMergeNode in="SourceGraphic"/></feMerge>
     </filter>
   </defs>
-
-  <!-- ── BACKGROUND (transparent — works on dark sites) ── -->
 
   <!-- ── OUTER INFINITY STROKE (thick, slightly transparent) ── -->
   <path
@@ -95,7 +93,7 @@
     opacity="0.6"
   />
 
-  <!-- ── CENTER CROSSING DOTS ── -->
+  <!-- ── CENTER CROSSING DOT ── -->
   <circle cx="260" cy="128" r="5" fill="url(#innerGrad)" opacity="0.7" filter="url(#glow)"/>
 
   <!-- ── WORDMARK: DIRECT ── -->
@@ -110,7 +108,7 @@
     fill="#ffffff"
   >DIRECT</text>
 
-  <!-- ── SUBLINE: Recruiting &amp; Headhunting ── -->
+  <!-- ── SUBLINE: Recruiting & Headhunting ── -->
   <text
     x="260"
     y="238"
