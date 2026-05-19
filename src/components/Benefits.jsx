@@ -23,7 +23,7 @@ export default function Benefits() {
         </FadeUp>
         <div className="benefits-grid">
           {benefits.map((b, i) => (
-            <FadeUp key={b.title} delay={i * 0.08}>
+            <FadeUp key={b.title} delay={i * 0.08} className="benefit-fadeup">
               <motion.div className="benefit-card"
                 whileHover={{ y: -5, borderColor: 'rgba(201,168,76,0.5)' }}
               >
