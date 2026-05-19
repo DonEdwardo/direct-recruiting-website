@@ -59,7 +59,7 @@ export default function Hero() {
           transition={{ duration: 1, delay: 0.5, ease: [0.25,0.1,0.25,1] }}
         >
           <div className="logo-frame">
-            <img src={`${import.meta.env.BASE_URL}logo-new.svg`} alt="Direct Recruiting & Headhunting" />
+            <img src={`${import.meta.env.BASE_URL}logo-new.png`} alt="Direct Recruiting & Headhunting" />
             <div className="logo-frame-corner tl" />
             <div className="logo-frame-corner tr" />
             <div className="logo-frame-corner bl" />
