@@ -143,6 +143,16 @@ export default function Roles() {
           </div>
         </FadeUp>
 
+        <FadeUp delay={0.15}>
+          <div className="candidate-notice">
+            <div className="candidate-notice-icon">◈</div>
+            <div>
+              <h4>Application Requirements</h4>
+              <p>All candidates are required to provide <strong>letters of experience from previous employers</strong> confirming their roles and tenure. Any relevant <strong>certificates or diplomas</strong> are a strong advantage and should be included with your application.</p>
+            </div>
+          </div>
+        </FadeUp>
+
         <div className="roles-grid">
           {roles.map((role, i) => <RoleCard key={role.title} role={role} index={i} />)}
         </div>

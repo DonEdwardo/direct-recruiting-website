@@ -2,7 +2,7 @@ import { motion } from 'framer-motion';
 import FadeUp from './FadeUp';
 
 const metrics = [
-  { num: '5', unit: 'days', label: 'Avg. Time to Shortlist' },
+  { num: '7', unit: 'days', label: 'Avg. Time to Shortlist' },
   { num: '98%', label: 'Client Retention Rate' },
   { num: '500+', label: 'Successful Placements' },
   { num: '12+', label: 'Industries Covered' },

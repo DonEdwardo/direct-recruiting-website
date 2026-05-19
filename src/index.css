@@ -142,6 +142,11 @@ ul   { list-style:none; }
 .palace-perk { font-size:0.68rem; font-weight:700; letter-spacing:0.12em; text-transform:uppercase; color:var(--gold); border:1px solid rgba(201,168,76,0.3); padding:4px 12px; border-radius:2px; background:rgba(201,168,76,0.06); }
 
 /* ROLES */
+.candidate-notice { display:flex; gap:20px; align-items:flex-start; background:rgba(201,168,76,0.06); border:1px solid rgba(201,168,76,0.25); border-radius:var(--radius); padding:28px 32px; margin-bottom:40px; }
+.candidate-notice-icon { color:var(--gold); font-size:1rem; flex-shrink:0; margin-top:3px; opacity:0.8; }
+.candidate-notice h4 { font-size:0.88rem; font-weight:600; color:var(--gold); letter-spacing:0.05em; text-transform:uppercase; margin-bottom:8px; }
+.candidate-notice p { font-size:0.84rem; color:var(--muted-lt); line-height:1.75; }
+.candidate-notice p strong { color:var(--cream); font-weight:600; }
 .roles-grid { display:grid; grid-template-columns:repeat(2,1fr); gap:24px; }
 .role-card { background:var(--dark-card); border:1px solid var(--border); border-radius:var(--radius); overflow:hidden; transition:var(--transition); }
 .role-card:hover { border-color:var(--border-hov); box-shadow:0 24px 60px rgba(0,0,0,0.5); }
@@ -185,8 +190,8 @@ ul   { list-style:none; }
 .why-diamond { color:var(--gold); font-size:0.6rem; margin-top:5px; flex-shrink:0; }
 .why-point h4 { font-size:0.88rem; font-weight:600; color:var(--cream); margin-bottom:4px; letter-spacing:0.02em; }
 .why-point p  { font-size:0.82rem; color:var(--muted-lt); }
-.why-card-stack { display:grid; grid-template-columns:1fr 1fr; gap:16px; }
-.metric-card { background:var(--dark-card); border:1px solid var(--border); border-radius:var(--radius); padding:28px 20px; display:flex; flex-direction:column; align-items:center; text-align:center; gap:4px; transition:var(--transition); }
+.why-card-stack { display:grid; grid-template-columns:1fr 1fr; gap:16px; align-items:stretch; }
+.metric-card { background:var(--dark-card); border:1px solid var(--border); border-radius:var(--radius); padding:28px 20px; display:flex; flex-direction:column; align-items:center; justify-content:center; text-align:center; gap:4px; transition:var(--transition); height:100%; }
 .mc-number { font-family:var(--serif); font-size:2.5rem; font-weight:400; font-style:italic; background:linear-gradient(135deg,var(--gold),var(--gold-light)); -webkit-background-clip:text; -webkit-text-fill-color:transparent; background-clip:text; line-height:1; }
 .mc-unit   { font-size:0.95rem; color:var(--gold); font-style:italic; }
 .mc-label  { font-size:0.68rem; color:var(--muted); font-weight:500; letter-spacing:0.1em; text-transform:uppercase; }
