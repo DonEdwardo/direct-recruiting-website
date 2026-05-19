@@ -32,12 +32,6 @@ const itemVariants = {
 };
 
 export default function Hero() {
-  const stats = [
-    { num: '500+', label: 'Placements Made' },
-    { num: '98%', label: 'Client Satisfaction' },
-    { num: '12+', label: 'Industries Served' },
-  ];
-
   return (
     <section className="hero" id="hero">
       <div className="hero-bg" />
@@ -49,32 +43,37 @@ export default function Hero() {
         animate="visible"
       >
         <motion.div className="hero-badge" variants={itemVariants}>
-          Executive Search & Talent Acquisition
+          🏰 Exclusive Hospitality Recruitment — Saudi Arabia
         </motion.div>
 
         <motion.h1 className="hero-title" variants={itemVariants}>
-          Connecting <span className="gradient-text">Exceptional Talent</span><br />
-          with Visionary Companies
+          Placing World-Class Talent in a<br />
+          <span className="gradient-text">5-Star Royal Palace</span>
         </motion.h1>
 
         <motion.p className="hero-sub" variants={itemVariants}>
-          Direct Recruitment & Headhunting bridges the gap between outstanding professionals
-          and forward-thinking organizations — with precision, integrity, and speed.
+          Direct Recruitment & Headhunting is sourcing elite hospitality professionals
+          for an exclusive Royal Palace in Saudi Arabia. Roles in Housekeeping, Spa,
+          Tailoring, Laundry & more — exceptional candidates only.
         </motion.p>
 
         <motion.div className="hero-ctas" variants={itemVariants}>
-          <motion.a href="#contact" className="btn-primary"
+          <motion.a href="#roles" className="btn-primary"
             whileHover={{ scale: 1.05, boxShadow: '0 0 40px rgba(0,200,224,0.5)' }}
             whileTap={{ scale: 0.97 }}
-          >Find Your Next Hire</motion.a>
-          <motion.a href="#services" className="btn-outline"
+          >View Open Roles</motion.a>
+          <motion.a href="#contact" className="btn-outline"
             whileHover={{ scale: 1.04, background: 'rgba(0,200,224,0.08)' }}
             whileTap={{ scale: 0.97 }}
-          >Explore Services</motion.a>
+          >Apply Now</motion.a>
         </motion.div>
 
         <motion.div className="hero-stats" variants={itemVariants}>
-          {stats.map((s, i) => (
+          {[
+            { num: '5★', label: 'Royal Palace' },
+            { num: 'KSA', label: 'Saudi Arabia' },
+            { num: '10+', label: 'Open Positions' },
+          ].map((s, i) => (
             <div key={s.label} style={{ display: 'flex', alignItems: 'center' }}>
               {i > 0 && <div className="stat-divider" />}
               <div className="stat">
@@ -92,14 +91,17 @@ export default function Hero() {
         transition={{ duration: 1, delay: 0.4, ease: [0.25, 0.1, 0.25, 1] }}
       >
         <div className="hero-logo-wrap">
-          <motion.img src="/logo.png" alt="Direct" className="hero-logo-img"
-            animate={{ y: [0, -14, 0] }}
-            transition={{ duration: 6, repeat: Infinity, ease: 'easeInOut' }}
-          />
+          <div className="hero-palace-img">
+            <img
+              src="https://images.unsplash.com/photo-1566073771259-6a8506099945?w=500&q=80&fit=crop"
+              alt="Luxury Palace"
+            />
+            <div className="palace-overlay" />
+          </div>
           {[300, 350, 400].map((size, i) => (
             <motion.div key={size} className={`glow-ring ring${i + 1}`}
               animate={{ scale: [1, 1.04, 1], opacity: [0.3, 0.7, 0.3] }}
-              transition={{ duration: 3, repeat: Infinity, delay: i * 0.6, ease: 'easeInOut' }}
+              transition={{ duration: 3, repeat: Infinity, delay: i * 0.6 }}
             />
           ))}
         </div>

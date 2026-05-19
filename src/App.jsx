@@ -1,9 +1,9 @@
 import Nav from './components/Nav';
 import Hero from './components/Hero';
-import Services from './components/Services';
-import WhyUs from './components/WhyUs';
+import Roles from './components/Roles';
+import Benefits from './components/Benefits';
 import Process from './components/Process';
-import Industries from './components/Industries';
+import WhyUs from './components/WhyUs';
 import Testimonials from './components/Testimonials';
 import Contact from './components/Contact';
 import Footer from './components/Footer';
@@ -13,10 +13,10 @@ export default function App() {
     <>
       <Nav />
       <Hero />
-      <Services />
-      <WhyUs />
+      <Roles />
+      <Benefits />
       <Process />
-      <Industries />
+      <WhyUs />
       <Testimonials />
       <Contact />
       <Footer />

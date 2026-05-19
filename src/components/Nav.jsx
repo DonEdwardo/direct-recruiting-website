@@ -11,7 +11,7 @@ export default function Nav() {
     return () => window.removeEventListener('scroll', onScroll);
   }, []);
 
-  const links = ['Services', 'Why Us', 'Process', 'Industries'];
+  const links = ['Roles', 'Benefits', 'Process', 'Why Us'];
 
   return (
     <motion.nav
