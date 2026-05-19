@@ -22,7 +22,7 @@ export default function Nav() {
     >
       <div className="nav-inner">
         <a href="#hero" className="nav-logo">
-          <img src="/logo.png" alt="Direct Recruitment & Headhunting" />
+          <img src={`${import.meta.env.BASE_URL}logo.png`} alt="Direct Recruitment & Headhunting" />
         </a>
 
         <ul className="nav-links">

@@ -5,8 +5,8 @@ import FadeUp from './FadeUp';
 
 const testimonials = [
   { initials: 'JM', name: 'James Morrison', role: 'CEO, ScaleUp Ventures', text: 'Direct found us a CFO within three weeks who had precisely the private equity experience we needed. The briefing process was thorough and the shortlist was outstanding — no filler candidates.' },
-  { initials: 'SR', name: 'Sofia Ramirez', role: 'CPO, TechBridge Ltd', text: 'We\'ve used many recruiters over the years, but Direct is in a different league. They truly understood our culture, moved fast, and the VP of Engineering they placed has been transformative for our product team.', featured: true },
-  { initials: 'AK', name: 'Alexander Kowalski', role: 'MD, Meridian Capital', text: 'Exceptional service from start to finish. The market intel alone was worth its weight in gold — we realigned our entire comp structure based on their benchmarking data before even opening the role.' },
+  { initials: 'SR', name: 'Sofia Ramirez', role: 'CPO, TechBridge Ltd', text: 'We\'ve used many recruiters, but Direct operates at a completely different level. They understood our culture, moved with remarkable speed, and the VP they placed has been transformative.', featured: true },
+  { initials: 'AK', name: 'Alexander Kowalski', role: 'MD, Meridian Capital', text: 'Exceptional service from start to finish. The market intelligence alone was worth its weight in gold — we realigned our entire compensation structure before even opening the role.' },
 ];
 
 function TestimonialCard({ t, index }) {
@@ -17,9 +17,9 @@ function TestimonialCard({ t, index }) {
       initial={{ opacity: 0, y: 40 }}
       animate={inView ? { opacity: 1, y: 0 } : {}}
       transition={{ duration: 0.6, delay: index * 0.12 }}
-      whileHover={{ y: -6, borderColor: 'rgba(0,200,224,0.3)' }}
+      whileHover={{ y: -5 }}
     >
-      <div className="quote-icon">"</div>
+      <div className="quote-mark">"</div>
       <p>{t.text}</p>
       <div className="testimonial-author">
         <div className="author-avatar">{t.initials}</div>
@@ -38,8 +38,8 @@ export default function Testimonials() {
       <div className="container">
         <FadeUp>
           <div className="section-header">
-            <div className="section-tag">Testimonials</div>
-            <h2>What Our <span className="gradient-text">Clients Say</span></h2>
+            <div className="section-eyebrow"><span className="gold-line-sm"/>Testimonials<span className="gold-line-sm"/></div>
+            <h2>What Our <span className="gold-text">Clients Say</span></h2>
           </div>
         </FadeUp>
         <div className="testimonials-grid">
