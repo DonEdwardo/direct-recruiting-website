@@ -21,7 +21,7 @@ export default function Footer() {
           </div>
 
           {[
-            { title: 'Open Roles', links: ['Housekeeping Staff', 'Laundry Supervisor', 'Spa Therapist', 'Digital Tailor', 'Executive Chef', 'Butler'] },
+            { title: 'Open Roles', links: ['Housekeeping Staff', 'Laundry Supervisor', 'Spa Therapist', 'Digital Tailor', 'Executive Chef', 'Female Hairdresser'] },
             { title: 'Company', links: ['Why Direct', 'Our Process', 'For Candidates', 'Contact'] },
             { title: 'Location', links: ['Kingdom of Saudi Arabia', 'Remote-First Operations', 'Global Candidate Network'] },
           ].map(col => (
