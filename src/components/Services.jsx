@@ -14,7 +14,7 @@ const services = [
   },
   {
     title: 'Headhunting',
-    desc: 'Proactively targeting passive candidates who aren\'t on the open market — the professionals your competitors wish they had.',
+    desc: 'Proactively targeting passive candidates who aren\'t on the open market, the professionals your competitors wish they had.',
     points: ['Passive talent sourcing', 'Competitive mapping', 'Discreet outreach'],
     featured: true,
     icon: (
@@ -23,7 +23,7 @@ const services = [
   },
   {
     title: 'Contingency Recruitment',
-    desc: 'Fast, results-driven placement for mid-level professionals — you only pay when we deliver the right hire.',
+    desc: 'Fast, results-driven placement for mid-level professionals, you only pay when we deliver the right hire.',
     points: ['No-hire, no-fee model', '48-hour candidate shortlist', 'All seniority levels'],
     icon: (
       <svg viewBox="0 0 48 48" fill="none"><rect x="6" y="12" width="36" height="28" rx="3" stroke="url(#s3)" strokeWidth="2.5"/><path d="M16 12V10a8 8 0 0116 0v2" stroke="url(#s3)" strokeWidth="2.5" strokeLinecap="round"/><path d="M14 26h20M14 32h12" stroke="url(#s3)" strokeWidth="2.5" strokeLinecap="round"/><defs><linearGradient id="s3" x1="6" y1="10" x2="42" y2="40" gradientUnits="userSpaceOnUse"><stop stopColor="#2070d0"/><stop offset="1" stopColor="#00c8e0"/></linearGradient></defs></svg>
@@ -39,7 +39,7 @@ const services = [
   },
   {
     title: 'Team Builds',
-    desc: 'Assembling entire functional teams from scratch — from founding engineers to full commercial departments.',
+    desc: 'Assembling entire functional teams from scratch, from founding engineers to full commercial departments.',
     points: ['Startup team formation', 'Department buildouts', 'Bulk hiring campaigns'],
     icon: (
       <svg viewBox="0 0 48 48" fill="none"><circle cx="18" cy="20" r="7" stroke="url(#s5)" strokeWidth="2.5"/><circle cx="32" cy="16" r="5" stroke="url(#s5)" strokeWidth="2.5"/><path d="M4 38c0-7.18 6.268-13 14-13" stroke="url(#s5)" strokeWidth="2.5" strokeLinecap="round"/><path d="M32 26c5.523 0 10 4.477 10 10" stroke="url(#s5)" strokeWidth="2.5" strokeLinecap="round"/><defs><linearGradient id="s5" x1="4" y1="10" x2="44" y2="44" gradientUnits="userSpaceOnUse"><stop stopColor="#2070d0"/><stop offset="1" stopColor="#00c8e0"/></linearGradient></defs></svg>

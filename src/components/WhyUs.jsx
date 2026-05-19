@@ -9,9 +9,9 @@ const metrics = [
 ];
 
 const points = [
-  { title: 'Speed Without Compromise', desc: 'Typical shortlist delivered within 5 business days — vetted, briefed, and ready to interview.' },
+  { title: 'Speed Without Compromise', desc: 'Typical shortlist delivered within 5 business days, vetted, briefed, and ready to interview.' },
   { title: 'Genuine Market Intelligence', desc: 'Real-time salary benchmarking, talent mapping, and competitor intelligence to inform your decisions.' },
-  { title: 'Long-Term Partnership', desc: 'We build lasting relationships — not transactional ones. Your success is our only benchmark.' },
+  { title: 'Long-Term Partnership', desc: 'We build lasting relationships, not transactional ones. Your success is our only benchmark.' },
   { title: 'Diversity & Discretion', desc: 'Every search conducted with complete confidentiality, D&I best practices, and zero compromise on quality.' },
 ];
 
@@ -25,7 +25,7 @@ export default function WhyUs() {
               <div className="section-eyebrow left"><span className="gold-line-sm"/>Why Direct</div>
               <h2>Built on <span className="gold-text">Trust</span> & Results</h2>
               <p className="why-lead">
-                We don't simply fill vacancies — we build careers and institutions.
+                We don't simply fill vacancies, we build careers and institutions.
                 Our consultants bring deep sector knowledge, a global network,
                 and an obsession with placing the right person in the right role.
               </p>

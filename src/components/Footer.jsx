@@ -8,13 +8,15 @@ export default function Footer() {
         <div className="footer-inner">
           <div className="footer-brand">
             <img src={`${import.meta.env.BASE_URL}logo-new.svg`} alt="Direct Recruiting & Headhunting" className="footer-logo" />
-            <p>Connecting exceptional talent with prestigious institutions — globally.</p>
+            <p>Connecting exceptional talent with prestigious institutions, globally.</p>
             <div className="social-links">
-              {['in', '𝕏'].map((icon, i) => (
-                <motion.a key={i} href="#" className="social-link"
-                  whileHover={{ borderColor: '#c9a84c', color: '#c9a84c', scale: 1.1 }}
-                >{icon}</motion.a>
-              ))}
+              <motion.a
+                href="https://www.linkedin.com/company/direct-recruitment-headhunting/"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="social-link"
+                whileHover={{ borderColor: '#c9a84c', color: '#c9a84c', scale: 1.1 }}
+              >in</motion.a>
             </div>
           </div>
 

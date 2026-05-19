@@ -13,7 +13,7 @@ export default function Hero() {
         <motion.div className="hero-content" variants={container} initial="hidden" animate="visible">
           <motion.div className="hero-eyebrow" variants={item}>
             <span className="gold-line" />
-            Exclusive Royal Palace — Kingdom of Saudi Arabia
+            Exclusive Royal Palace, Kingdom of Saudi Arabia
             <span className="gold-line" />
           </motion.div>
 

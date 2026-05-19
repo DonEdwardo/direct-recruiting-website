@@ -4,8 +4,8 @@ import { useRef } from 'react';
 import FadeUp from './FadeUp';
 
 const steps = [
-  { num: '01', title: 'Discovery Brief', desc: 'We invest time understanding the palace\'s culture, standards, team dynamics, and the precise profile required — far beyond a standard job description.' },
-  { num: '02', title: 'Global Search', desc: 'Our consultants activate an international network to identify both active and passive candidates — people your competitors don\'t know exist.' },
+  { num: '01', title: 'Discovery Brief', desc: 'We invest time understanding the palace\'s culture, standards, team dynamics, and the precise profile required, far beyond a standard job description.' },
+  { num: '02', title: 'Global Search', desc: 'Our consultants activate an international network to identify both active and passive candidates, people your competitors don\'t know exist.' },
   { num: '03', title: 'Rigorous Screening', desc: 'In-depth competency interviews, reference verification, and cultural alignment assessments before a single profile is presented.' },
   { num: '04', title: 'Curated Shortlist', desc: 'A refined shortlist of exceptional candidates with detailed profiles, interview guides, and salary benchmarks delivered within 5 business days.' },
   { num: '05', title: 'Placement & Beyond', desc: 'We manage offer negotiations, relocation logistics, and remain engaged through the first 90 days to ensure a flawless start.' },

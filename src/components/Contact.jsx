@@ -4,8 +4,7 @@ import FadeUp from './FadeUp';
 
 const contactItems = [
   { label: 'Info@ghazal.me' },
-  { label: '+1 (800) DIRECT-1' },
-  { label: 'Global — Remote-First Operations' },
+  { label: 'Global, Remote-First Operations' },
 ];
 
 export default function Contact() {
@@ -27,7 +26,7 @@ export default function Contact() {
             <div className="contact-text">
               <div className="section-eyebrow left"><span className="gold-line-sm"/>Let's Talk</div>
               <h2>Ready to Apply or<br /><span className="gold-text">Hire Exceptional Talent?</span></h2>
-              <p>Whether you are a candidate seeking this extraordinary opportunity, or an organisation looking to partner with us — reach out and we will respond within 24 hours.</p>
+              <p>Whether you are a candidate seeking this extraordinary opportunity, or an organisation looking to partner with us, reach out and we will respond within 24 hours.</p>
               <div className="contact-details">
                 {contactItems.map(c => (
                   <motion.div key={c.label} className="contact-item"
@@ -74,7 +73,7 @@ export default function Contact() {
                   <motion.div className="form-success"
                     initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0 }}
                   >
-                    ✓ &nbsp; Thank you — we will be in touch within 24 hours.
+                    ✓ &nbsp; Thank you, we will be in touch within 24 hours.
                   </motion.div>
                 )}
               </AnimatePresence>

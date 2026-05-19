@@ -53,7 +53,7 @@ const roles = [
     title: 'Executive Chef',
     category: 'Culinary Arts',
     level: 'Executive Level',
-    desc: 'Lead a brigade of chefs delivering exceptional culinary experiences across multiple palace dining venues — from intimate private dining to grand ceremonial banquets.',
+    desc: 'Lead a brigade of chefs delivering exceptional culinary experiences across multiple palace dining venues, from intimate private dining to grand ceremonial banquets.',
     requirements: ['Michelin-starred or equivalent background', 'Middle Eastern cuisine knowledge', 'Team management at scale'],
     img: 'https://images.unsplash.com/photo-1577219491135-ce391730fb2c?w=700&q=80&fit=crop',
     tag: 'Senior Appointment',
@@ -131,7 +131,7 @@ export default function Roles() {
             <div className="palace-banner-overlay">
               <div className="palace-banner-content">
                 <span className="palace-stars">★ ★ ★ ★ ★</span>
-                <h3>Royal Palace — Kingdom of Saudi Arabia</h3>
+                <h3>Royal Palace, Kingdom of Saudi Arabia</h3>
                 <p>An extraordinary opportunity at one of the most prestigious private residences in the world.</p>
                 <div className="palace-perks">
                   {['Tax-Free Salary','Full Accommodation','Return Flights','Medical Insurance'].map(p => (
