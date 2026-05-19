@@ -357,3 +357,32 @@ ul   { list-style:none; }
 
 /* Remove old static bg — no longer needed */
 .hero-bg-img { display: none; }
+
+/* ── MUSIC PLAYER ── */
+.music-btn {
+  position: fixed;
+  bottom: 28px;
+  right: 28px;
+  z-index: 1000;
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  border: 1px solid rgba(201,168,76,0.35);
+  background: rgba(8,8,8,0.75);
+  backdrop-filter: blur(12px);
+  color: var(--gold);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  box-shadow: 0 4px 24px rgba(0,0,0,0.4);
+  transition: border-color 0.3s, box-shadow 0.3s;
+}
+.music-btn:hover {
+  box-shadow: 0 6px 32px rgba(201,168,76,0.2);
+}
+.music-btn span {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
