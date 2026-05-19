@@ -7,7 +7,7 @@ export default function Footer() {
       <div className="container">
         <div className="footer-inner">
           <div className="footer-brand">
-            <img src={`${import.meta.env.BASE_URL}logo.png`} alt="Direct Recruitment & Headhunting" className="footer-logo" />
+            <img src={`${import.meta.env.BASE_URL}logo-new.svg`} alt="Direct Recruiting & Headhunting" className="footer-logo" />
             <p>Connecting exceptional talent with prestigious institutions — globally.</p>
             <div className="social-links">
               {['in', '𝕏'].map((icon, i) => (

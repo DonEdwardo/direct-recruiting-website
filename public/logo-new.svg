@@ -1,0 +1,128 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 520 260" fill="none">
+  <defs>
+    <!-- Main infinity gradient: deep blue → cyan -->
+    <linearGradient id="infinityGrad" x1="0" y1="0" x2="520" y2="0" gradientUnits="userSpaceOnUse">
+      <stop offset="0%"   stop-color="#1a4fd8"/>
+      <stop offset="40%"  stop-color="#2a7aef"/>
+      <stop offset="70%"  stop-color="#00b4d8"/>
+      <stop offset="100%" stop-color="#00d4e8"/>
+    </linearGradient>
+    <!-- Inner stroke gradient -->
+    <linearGradient id="innerGrad" x1="0" y1="0" x2="520" y2="0" gradientUnits="userSpaceOnUse">
+      <stop offset="0%"   stop-color="#4f9fff"/>
+      <stop offset="50%"  stop-color="#38d4f0"/>
+      <stop offset="100%" stop-color="#80eeff"/>
+    </linearGradient>
+    <!-- Glow filter -->
+    <filter id="glow" x="-30%" y="-30%" width="160%" height="160%">
+      <feGaussianBlur stdDeviation="4" result="blur"/>
+      <feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge>
+    </filter>
+    <filter id="softglow" x="-40%" y="-40%" width="180%" height="180%">
+      <feGaussianBlur stdDeviation="8" result="blur"/>
+      <feColorMatrix in="blur" type="matrix" values="0 0 0 0 0.1  0 0 0 0 0.7  0 0 0 0 1  0 0 0 0.4 0" result="colorBlur"/>
+      <feMerge><feMergeNode in="colorBlur"/><feMergeNode in="SourceGraphic"/></feMerge>
+    </filter>
+  </defs>
+
+  <!-- ── BACKGROUND (transparent — works on dark sites) ── -->
+
+  <!-- ── OUTER INFINITY STROKE (thick, slightly transparent) ── -->
+  <path
+    d="
+      M260,108
+      C260,108 232,72 196,72
+      C148,72 116,100 116,128
+      C116,156 148,184 196,184
+      C232,184 255,163 260,152
+      C265,163 288,184 324,184
+      C372,184 404,156 404,128
+      C404,100 372,72 324,72
+      C288,72 260,108 260,108
+      Z
+    "
+    stroke="url(#infinityGrad)"
+    stroke-width="18"
+    stroke-linecap="round"
+    stroke-linejoin="round"
+    fill="none"
+    opacity="0.95"
+    filter="url(#softglow)"
+  />
+
+  <!-- ── MIDDLE INFINITY STROKE ── -->
+  <path
+    d="
+      M260,108
+      C260,108 236,84 196,84
+      C158,84 130,105 130,128
+      C130,151 158,172 196,172
+      C236,172 258,148 260,148
+      C262,148 284,172 324,172
+      C362,172 390,151 390,128
+      C390,105 362,84 324,84
+      C284,84 260,108 260,108
+      Z
+    "
+    stroke="url(#innerGrad)"
+    stroke-width="10"
+    stroke-linecap="round"
+    stroke-linejoin="round"
+    fill="none"
+    opacity="0.85"
+    filter="url(#glow)"
+  />
+
+  <!-- ── INNER INFINITY STROKE (thin, bright) ── -->
+  <path
+    d="
+      M260,116
+      C260,116 240,96 196,96
+      C166,96 144,112 144,128
+      C144,144 166,160 196,160
+      C240,160 259,140 260,140
+      C261,140 280,160 324,160
+      C354,160 376,144 376,128
+      C376,112 354,96 324,96
+      C280,96 260,116 260,116
+      Z
+    "
+    stroke="url(#innerGrad)"
+    stroke-width="4"
+    stroke-linecap="round"
+    stroke-linejoin="round"
+    fill="none"
+    opacity="0.6"
+  />
+
+  <!-- ── CENTER CROSSING DOTS ── -->
+  <circle cx="260" cy="128" r="5" fill="url(#innerGrad)" opacity="0.7" filter="url(#glow)"/>
+
+  <!-- ── WORDMARK: DIRECT ── -->
+  <text
+    x="260"
+    y="210"
+    font-family="'Inter','Helvetica Neue',Arial,sans-serif"
+    font-size="38"
+    font-weight="800"
+    letter-spacing="12"
+    text-anchor="middle"
+    fill="#ffffff"
+  >DIRECT</text>
+
+  <!-- ── SUBLINE: Recruiting &amp; Headhunting ── -->
+  <text
+    x="260"
+    y="238"
+    font-family="'Inter','Helvetica Neue',Arial,sans-serif"
+    font-size="13"
+    font-weight="400"
+    letter-spacing="4"
+    text-anchor="middle"
+    fill="url(#infinityGrad)"
+    opacity="0.9"
+  >Recruiting &amp; Headhunting</text>
+
+  <!-- ── THIN DIVIDER LINE under DIRECT ── -->
+  <line x1="180" y1="218" x2="340" y2="218" stroke="url(#infinityGrad)" stroke-width="0.8" opacity="0.35"/>
+</svg>
