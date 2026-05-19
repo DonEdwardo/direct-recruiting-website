@@ -1,4 +1,5 @@
 import { motion } from 'framer-motion';
+import HeroSlideshow from './HeroSlideshow';
 
 const container = { hidden: {}, visible: { transition: { staggerChildren: 0.15 } } };
 const item = { hidden: { opacity: 0, y: 30 }, visible: { opacity: 1, y: 0, transition: { duration: 0.8, ease: [0.25,0.1,0.25,1] } } };
@@ -6,10 +7,7 @@ const item = { hidden: { opacity: 0, y: 30 }, visible: { opacity: 1, y: 0, trans
 export default function Hero() {
   return (
     <section className="hero" id="hero">
-      <div className="hero-bg-img">
-        <img src="https://images.unsplash.com/photo-1566073771259-6a8506099945?w=1600&q=85&fit=crop&crop=center" alt="" />
-        <div className="hero-bg-overlay" />
-      </div>
+      <HeroSlideshow />
 
       <div className="hero-inner">
         <motion.div className="hero-content" variants={container} initial="hidden" animate="visible">

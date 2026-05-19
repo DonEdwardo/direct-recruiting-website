@@ -273,3 +273,87 @@ ul   { list-style:none; }
   .palace-banner-overlay { padding:0 24px; }
   .benefits-grid   { grid-template-columns:1fr; }
 }
+
+/* ─── HERO SLIDESHOW ─────────────────────────────────────────── */
+.slideshow {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  overflow: hidden;
+}
+.slide {
+  position: absolute;
+  inset: 0;
+  will-change: opacity;
+}
+.slide-img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  will-change: transform;
+}
+.slide-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    105deg,
+    rgba(8,8,8,0.93) 0%,
+    rgba(8,8,8,0.80) 42%,
+    rgba(8,8,8,0.45) 70%,
+    rgba(8,8,8,0.15) 100%
+  );
+}
+
+/* Dot navigation */
+.slide-dots {
+  position: absolute;
+  bottom: 80px;
+  right: 36px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  z-index: 10;
+}
+.slide-dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  border: 1px solid rgba(201,168,76,0.5);
+  background: transparent;
+  cursor: pointer;
+  padding: 0;
+  transition: all 0.4s ease;
+}
+.slide-dot.active {
+  background: var(--gold);
+  border-color: var(--gold);
+  transform: scale(1.4);
+}
+.slide-dot:hover { border-color: var(--gold); }
+
+/* Progress bar */
+.slide-progress {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background: rgba(201,168,76,0.15);
+  z-index: 10;
+  overflow: hidden;
+}
+.slide-progress-fill {
+  height: 100%;
+  background: linear-gradient(90deg, var(--gold), var(--gold-light));
+  transform-origin: left;
+  width: 100%;
+}
+
+/* Keep hero content above slideshow */
+.hero-inner,
+.hero-scroll-hint { position: relative; z-index: 2; }
+
+/* Remove old static bg — no longer needed */
+.hero-bg-img { display: none; }
