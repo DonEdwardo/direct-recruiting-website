@@ -33,7 +33,7 @@ function Step({ step, index }) {
 
 export default function Process() {
   return (
-    <section className="section" id="process">
+    <section className="section section-charcoal" id="process">
       <div className="container">
         <FadeUp>
           <div className="section-header">

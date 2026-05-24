@@ -12,7 +12,7 @@ const benefits = [
 
 export default function Benefits() {
   return (
-    <section className="section section-dark" id="benefits">
+    <section className="section section-linen" id="benefits">
       <div className="container">
         <FadeUp>
           <div className="section-header">

@@ -17,7 +17,7 @@ const points = [
 
 export default function WhyUs() {
   return (
-    <section className="section section-dark" id="why-us">
+    <section className="section section-light" id="why-us">
       <div className="container">
         <div className="why-inner">
           <div className="why-text">
