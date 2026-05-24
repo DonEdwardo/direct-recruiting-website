@@ -93,7 +93,7 @@ export default function HeroSlideshow() {
         </motion.div>
       </AnimatePresence>
 
-      {/* Role caption — bottom left */}
+      {/* Role caption, bottom left */}
       <AnimatePresence mode="wait">
         <motion.div
           key={current}

@@ -25,7 +25,7 @@ export default function Hero() {
           <motion.p className="hero-sub" variants={item}>
             Direct Recruitment & Headhunting is exclusively retained to place
             world-class hospitality professionals at a prestigious 5-star Royal Palace
-            in Saudi Arabia — across Housekeeping, Spa, Tailoring, Culinary &amp; more.
+            in Saudi Arabia, across Housekeeping, Spa, Tailoring, Culinary &amp; more.
           </motion.p>
 
           <motion.div className="hero-ctas" variants={item}>

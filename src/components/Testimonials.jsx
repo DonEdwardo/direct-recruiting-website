@@ -4,9 +4,9 @@ import { useRef } from 'react';
 import FadeUp from './FadeUp';
 
 const testimonials = [
-  { initials: 'JM', name: 'James Morrison', role: 'CEO, ScaleUp Ventures', text: 'Direct found us a CFO within three weeks who had precisely the private equity experience we needed. The briefing process was thorough and the shortlist was outstanding — no filler candidates.' },
+  { initials: 'JM', name: 'James Morrison', role: 'CEO, ScaleUp Ventures', text: 'Direct found us a CFO within three weeks who had precisely the private equity experience we needed. The briefing process was thorough and the shortlist was outstanding, no filler candidates.' },
   { initials: 'SR', name: 'Sofia Ramirez', role: 'CPO, TechBridge Ltd', text: 'We\'ve used many recruiters, but Direct operates at a completely different level. They understood our culture, moved with remarkable speed, and the VP they placed has been transformative.', featured: true },
-  { initials: 'AK', name: 'Alexander Kowalski', role: 'MD, Meridian Capital', text: 'Exceptional service from start to finish. The market intelligence alone was worth its weight in gold — we realigned our entire compensation structure before even opening the role.' },
+  { initials: 'AK', name: 'Alexander Kowalski', role: 'MD, Meridian Capital', text: 'Exceptional service from start to finish. The market intelligence alone was worth its weight in gold, we realigned our entire compensation structure before even opening the role.' },
 ];
 
 function TestimonialCard({ t, index }) {

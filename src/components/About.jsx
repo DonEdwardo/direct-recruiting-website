@@ -9,7 +9,7 @@ const credentials = [
 ];
 
 const pillars = [
-  { icon: '◈ ◈ ◈', title: 'Uncompromising Excellence', desc: 'Our standard is not the industry\'s best — it is the palace\'s finest. We present only the exceptional.' },
+  { icon: '◈ ◈ ◈', title: 'Uncompromising Excellence', desc: 'Our standard is not the industry\'s best, it is the palace\'s finest. We present only the exceptional.' },
   { icon: '◈ ◈ ◈', title: 'Absolute Discretion', desc: 'Every search, every placement, every conversation conducted with complete confidentiality.' },
   { icon: '◈ ◈ ◈', title: 'Precision Placement', desc: 'We do not submit candidates. We curate, verify, and present world-class professionals.' },
 ];
@@ -31,7 +31,7 @@ export default function About() {
                 Direct Recruitment & Headhunting operates at the intersection of luxury
                 hospitality and exceptional human talent. We are exclusively retained to
                 place world-class professionals inside one of the most prestigious private
-                palaces in the Kingdom of Saudi Arabia — an environment where only the
+                palaces in the Kingdom of Saudi Arabia, an environment where only the
                 finest will do.
               </p>
               <p className="about-body">
