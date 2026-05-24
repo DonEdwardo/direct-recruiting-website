@@ -481,6 +481,40 @@ ul  { list-style:none; }
     radial-gradient(ellipse 100% 100% at 50% 60%, rgba(3,3,8,0.65) 0%, transparent 70%),
     linear-gradient(180deg,rgba(3,3,8,0.5) 0%,rgba(3,3,8,0.9) 100%);
 }
+/* Slide role caption */
+.slide-caption {
+  position: absolute;
+  bottom: 48px;
+  left: 48px;
+  z-index: 10;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+.slide-caption-category {
+  font-size: 0.58rem;
+  font-weight: 700;
+  letter-spacing: 0.28em;
+  text-transform: uppercase;
+  color: var(--gold);
+  opacity: 0.85;
+}
+.slide-caption-role {
+  font-family: var(--serif);
+  font-size: 1.5rem;
+  font-weight: 300;
+  font-style: italic;
+  color: var(--white);
+  line-height: 1.2;
+}
+.slide-caption-dept {
+  font-size: 0.62rem;
+  font-weight: 500;
+  letter-spacing: 0.14em;
+  color: rgba(240,235,224,0.45);
+  text-transform: uppercase;
+}
+
 .slide-dots { position:absolute; bottom:88px; right:36px; display:flex; flex-direction:column; gap:10px; z-index:10; }
 .slide-dot { width:6px; height:6px; border-radius:50%; border:1px solid rgba(196,150,48,0.44); background:transparent; cursor:pointer; padding:0; transition:all 0.4s ease; }
 .slide-dot.active { background:var(--gold); border-color:var(--gold); transform:scale(1.4); box-shadow:0 0 10px rgba(196,150,48,0.65); }
