@@ -1,8 +1,8 @@
 import { motion } from 'framer-motion';
 import HeroSlideshow from './HeroSlideshow';
 
-const container = { hidden: {}, visible: { transition: { staggerChildren: 0.15 } } };
-const item = { hidden: { opacity: 0, y: 30 }, visible: { opacity: 1, y: 0, transition: { duration: 0.8, ease: [0.25,0.1,0.25,1] } } };
+const container = { hidden: {}, visible: { transition: { staggerChildren: 0.18 } } };
+const item = { hidden: { opacity: 0, y: 28 }, visible: { opacity: 1, y: 0, transition: { duration: 0.9, ease: [0.25,0.1,0.25,1] } } };
 
 export default function Hero() {
   return (
@@ -11,9 +11,10 @@ export default function Hero() {
 
       <div className="hero-inner">
         <motion.div className="hero-content" variants={container} initial="hidden" animate="visible">
+
           <motion.div className="hero-eyebrow" variants={item}>
             <span className="gold-line" />
-            Exclusive Royal Palace, Kingdom of Saudi Arabia
+            Exclusive Royal Palace &nbsp;·&nbsp; Kingdom of Saudi Arabia
             <span className="gold-line" />
           </motion.div>
 
@@ -24,7 +25,7 @@ export default function Hero() {
           <motion.p className="hero-sub" variants={item}>
             Direct Recruitment & Headhunting is exclusively retained to place
             world-class hospitality professionals at a prestigious 5-star Royal Palace
-            in Saudi Arabia. Roles across Housekeeping, Spa, Tailoring, Culinary &amp; more.
+            in Saudi Arabia — across Housekeeping, Spa, Tailoring, Culinary &amp; more.
           </motion.p>
 
           <motion.div className="hero-ctas" variants={item}>
@@ -36,11 +37,14 @@ export default function Hero() {
             >Apply Now</motion.a>
           </motion.div>
 
+          <motion.div className="hero-divider" variants={item} />
+
           <motion.div className="hero-stats" variants={item}>
             {[
               { num: '5★', label: 'Royal Palace' },
               { num: 'KSA', label: 'Saudi Arabia' },
               { num: '10+', label: 'Open Positions' },
+              { num: '24h', label: 'Response Time' },
             ].map((s, i) => (
               <div key={s.label} style={{ display:'flex', alignItems:'center' }}>
                 {i > 0 && <div className="stat-divider" />}
@@ -51,20 +55,7 @@ export default function Hero() {
               </div>
             ))}
           </motion.div>
-        </motion.div>
 
-        <motion.div className="hero-logo-panel"
-          initial={{ opacity: 0, x: 60 }}
-          animate={{ opacity: 1, x: 0 }}
-          transition={{ duration: 1, delay: 0.5, ease: [0.25,0.1,0.25,1] }}
-        >
-          <div className="logo-frame">
-            <img src={`${import.meta.env.BASE_URL}logo-new.png`} alt="Direct Recruiting & Headhunting" />
-            <div className="logo-frame-corner tl" />
-            <div className="logo-frame-corner tr" />
-            <div className="logo-frame-corner bl" />
-            <div className="logo-frame-corner br" />
-          </div>
         </motion.div>
       </div>
 
