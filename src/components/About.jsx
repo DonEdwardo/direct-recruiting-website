@@ -1,5 +1,6 @@
 import FadeUp from './FadeUp';
 import { motion } from 'framer-motion';
+import { useTilt } from '../hooks/useTilt';
 
 const credentials = [
   { num: '5★', title: 'Exclusively Retained', desc: 'Sole recruiting partner for a prestigious Royal Palace in the Kingdom of Saudi Arabia.' },
@@ -13,6 +14,26 @@ const pillars = [
   { icon: '◈ ◈ ◈', title: 'Absolute Discretion', desc: 'Every search, every placement, every conversation conducted with complete confidentiality.' },
   { icon: '◈ ◈ ◈', title: 'Precision Placement', desc: 'We do not submit candidates. We curate, verify, and present world-class professionals.' },
 ];
+
+function PillarCard({ p, i }) {
+  const { ref, tiltStyle, onMouseMove, onMouseLeave } = useTilt(7);
+  return (
+    <FadeUp delay={0.18 + i * 0.13}>
+      <motion.div
+        ref={ref}
+        className="about-pillar"
+        style={tiltStyle}
+        onMouseMove={onMouseMove}
+        onMouseLeave={onMouseLeave}
+      >
+        <div className="card-shine" />
+        <div className="about-pillar-icon">{p.icon}</div>
+        <h4>{p.title}</h4>
+        <p>{p.desc}</p>
+      </motion.div>
+    </FadeUp>
+  );
+}
 
 export default function About() {
   return (
@@ -57,22 +78,11 @@ export default function About() {
           </FadeUp>
         </div>
 
-        <FadeUp delay={0.18}>
-          <div className="about-pillars">
-            {pillars.map((p, i) => (
-              <motion.div
-                key={p.title}
-                className="about-pillar"
-                whileHover={{ y: -4 }}
-                transition={{ type: 'spring', stiffness: 280 }}
-              >
-                <div className="about-pillar-icon">{p.icon}</div>
-                <h4>{p.title}</h4>
-                <p>{p.desc}</p>
-              </motion.div>
-            ))}
-          </div>
-        </FadeUp>
+        <div className="about-pillars">
+          {pillars.map((p, i) => (
+            <PillarCard key={p.title} p={p} i={i} />
+          ))}
+        </div>
       </div>
     </section>
   );

@@ -549,3 +549,42 @@ ul  { list-style:none; }
 .slide-progress-fill { height:100%; background:linear-gradient(90deg,var(--gold),var(--gold-light)); transform-origin:left; width:100%; }
 .hero-inner, .hero-scroll-hint { position:relative; z-index:2; }
 .hero-bg-img { display:none; }
+
+/* ─── CURSOR GLOW ───────────────────────────────────────────── */
+.cursor-glow {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 560px;
+  height: 560px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(196,150,48,0.09) 0%, rgba(196,150,48,0.03) 40%, transparent 70%);
+  pointer-events: none;
+  z-index: 9998;
+  mix-blend-mode: screen;
+  will-change: transform;
+}
+
+/* ─── CARD SHINE (3D tilt highlight) ────────────────────────── */
+.card-shine {
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  background: linear-gradient(
+    135deg,
+    rgba(255,255,255,0.07) 0%,
+    rgba(255,255,255,0.02) 40%,
+    transparent 60%
+  );
+  pointer-events: none;
+  z-index: 1;
+  opacity: 0;
+  transition: opacity 0.35s ease;
+}
+.role-card:hover .card-shine,
+.benefit-card:hover .card-shine,
+.metric-card:hover .card-shine,
+.about-pillar:hover .card-shine { opacity: 1; }
+
+/* Ensure tilt parents are positioned */
+.role-card, .benefit-card, .metric-card, .about-pillar { position: relative; overflow: hidden; }

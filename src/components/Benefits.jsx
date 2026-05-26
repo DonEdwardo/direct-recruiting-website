@@ -1,5 +1,6 @@
 import { motion } from 'framer-motion';
 import FadeUp from './FadeUp';
+import { useTilt } from '../hooks/useTilt';
 
 const benefits = [
   { icon: '◈', title: 'Tax-Free Salary', desc: 'Highly competitive, tax-free compensation benchmarked against the top 1% of hospitality roles globally.' },
@@ -9,6 +10,27 @@ const benefits = [
   { icon: '◈', title: 'Cultural Experience', desc: 'A once-in-a-lifetime opportunity to live and work in one of the world\'s most fascinating kingdoms.' },
   { icon: '◈', title: 'Career Elevation', desc: 'Work alongside the world\'s finest hospitality professionals in an environment that demands excellence.' },
 ];
+
+function BenefitCard({ b, i }) {
+  const { ref, tiltStyle, onMouseMove, onMouseLeave } = useTilt(6);
+  return (
+    <FadeUp delay={i * 0.08} className="benefit-fadeup">
+      <motion.div
+        ref={ref}
+        className="benefit-card"
+        style={tiltStyle}
+        whileHover={{ borderColor: 'rgba(201,168,76,0.5)' }}
+        onMouseMove={onMouseMove}
+        onMouseLeave={onMouseLeave}
+      >
+        <div className="card-shine" />
+        <div className="benefit-icon">◈</div>
+        <h4>{b.title}</h4>
+        <p>{b.desc}</p>
+      </motion.div>
+    </FadeUp>
+  );
+}
 
 export default function Benefits() {
   return (
@@ -23,15 +45,7 @@ export default function Benefits() {
         </FadeUp>
         <div className="benefits-grid">
           {benefits.map((b, i) => (
-            <FadeUp key={b.title} delay={i * 0.08} className="benefit-fadeup">
-              <motion.div className="benefit-card"
-                whileHover={{ y: -5, borderColor: 'rgba(201,168,76,0.5)' }}
-              >
-                <div className="benefit-icon">◈</div>
-                <h4>{b.title}</h4>
-                <p>{b.desc}</p>
-              </motion.div>
-            </FadeUp>
+            <BenefitCard key={b.title} b={b} i={i} />
           ))}
         </div>
       </div>

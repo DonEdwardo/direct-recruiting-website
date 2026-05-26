@@ -2,6 +2,7 @@ import { motion } from 'framer-motion';
 import { useInView } from 'framer-motion';
 import { useRef } from 'react';
 import FadeUp from './FadeUp';
+import { useTilt } from '../hooks/useTilt';
 
 const roles = [
   {
@@ -73,34 +74,43 @@ const roles = [
 const perks = ['Tax-Free Salary', 'Full Accommodation', 'Return Flights', 'Medical Insurance'];
 
 function RoleCard({ role, index }) {
-  const ref = useRef(null);
-  const inView = useInView(ref, { once: true, margin: '0px 0px -40px 0px' });
+  const inViewRef = useRef(null);
+  const inView = useInView(inViewRef, { once: true, margin: '0px 0px -40px 0px' });
+  const { ref: tiltRef, tiltStyle, onMouseMove, onMouseLeave } = useTilt(8);
+
   return (
-    <motion.div ref={ref} className="role-card"
-      initial={{ opacity: 0, y: 36 }}
-      animate={inView ? { opacity: 1, y: 0 } : {}}
-      transition={{ duration: 0.6, delay: (index % 3) * 0.08 }}
-      whileHover={{ y: -5 }}
-    >
-      <div className="role-img-wrap">
-        <img src={role.img} alt={role.title} className="role-img" loading="lazy" />
-        <div className="role-img-overlay" />
-        <div className="role-tag">{role.tag}</div>
-        <div className="role-img-title">
-          <div className="role-category-sm">{role.category}</div>
-          <h3>{role.title}</h3>
+    <div ref={inViewRef}>
+      <motion.div
+        ref={tiltRef}
+        className="role-card"
+        style={tiltStyle}
+        initial={{ opacity: 0, y: 36 }}
+        animate={inView ? { opacity: 1, y: 0 } : {}}
+        transition={{ duration: 0.65, delay: (index % 3) * 0.09 }}
+        onMouseMove={onMouseMove}
+        onMouseLeave={onMouseLeave}
+      >
+        <div className="card-shine" />
+        <div className="role-img-wrap">
+          <img src={role.img} alt={role.title} className="role-img" loading="lazy" />
+          <div className="role-img-overlay" />
+          <div className="role-tag">{role.tag}</div>
+          <div className="role-img-title">
+            <div className="role-category-sm">{role.category}</div>
+            <h3>{role.title}</h3>
+          </div>
         </div>
-      </div>
-      <div className="role-body">
-        <div className="role-level">{role.level}</div>
-        <ul className="role-reqs">
-          {role.requirements.map(r => <li key={r}>{r}</li>)}
-        </ul>
-        <motion.a href="#contact" className="btn-gold btn-sm btn-full"
-          whileHover={{ scale: 1.02 }} whileTap={{ scale: 0.97 }}
-        >Apply Now</motion.a>
-      </div>
-    </motion.div>
+        <div className="role-body">
+          <div className="role-level">{role.level}</div>
+          <ul className="role-reqs">
+            {role.requirements.map(r => <li key={r}>{r}</li>)}
+          </ul>
+          <motion.a href="#contact" className="btn-gold btn-sm btn-full"
+            whileHover={{ scale: 1.02 }} whileTap={{ scale: 0.97 }}
+          >Apply Now</motion.a>
+        </div>
+      </motion.div>
+    </div>
   );
 }
 

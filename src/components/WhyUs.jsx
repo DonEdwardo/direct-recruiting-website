@@ -1,5 +1,6 @@
 import { motion } from 'framer-motion';
 import FadeUp from './FadeUp';
+import { useTilt } from '../hooks/useTilt';
 
 const metrics = [
   { num: '7', unit: 'days', label: 'Avg. Time to Shortlist' },
@@ -14,6 +15,27 @@ const points = [
   { title: 'Long-Term Partnership', desc: 'We build lasting relationships, not transactional ones. Your success is our only benchmark.' },
   { title: 'Diversity & Discretion', desc: 'Every search conducted with complete confidentiality, D&I best practices, and zero compromise on quality.' },
 ];
+
+function MetricCard({ m, i }) {
+  const { ref, tiltStyle, onMouseMove, onMouseLeave } = useTilt(7);
+  return (
+    <FadeUp delay={i * 0.1}>
+      <motion.div
+        ref={ref}
+        className="metric-card"
+        style={tiltStyle}
+        whileHover={{ borderColor: 'rgba(201,168,76,0.5)' }}
+        onMouseMove={onMouseMove}
+        onMouseLeave={onMouseLeave}
+      >
+        <div className="card-shine" />
+        <span className="mc-number">{m.num}</span>
+        {m.unit && <span className="mc-unit">{m.unit}</span>}
+        <span className="mc-label">{m.label}</span>
+      </motion.div>
+    </FadeUp>
+  );
+}
 
 export default function WhyUs() {
   return (
@@ -47,13 +69,7 @@ export default function WhyUs() {
           <div className="why-visual">
             <div className="why-card-stack">
               {metrics.map((m, i) => (
-                <FadeUp key={m.label} delay={i * 0.1}>
-                  <motion.div className="metric-card" whileHover={{ y: -5, borderColor: 'rgba(201,168,76,0.5)' }}>
-                    <span className="mc-number">{m.num}</span>
-                    {m.unit && <span className="mc-unit">{m.unit}</span>}
-                    <span className="mc-label">{m.label}</span>
-                  </motion.div>
-                </FadeUp>
+                <MetricCard key={m.label} m={m} i={i} />
               ))}
             </div>
           </div>
