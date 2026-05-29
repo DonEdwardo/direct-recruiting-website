@@ -1,5 +1,4 @@
-import { motion } from 'framer-motion';
-import { useInView } from 'framer-motion';
+import { motion, useInView } from 'framer-motion';
 import { useRef } from 'react';
 import FadeUp from './FadeUp';
 
@@ -16,13 +15,11 @@ function Step({ step, index }) {
   const inView = useInView(ref, { once: true, margin: '0px 0px -40px 0px' });
   return (
     <motion.div ref={ref} className="step"
-      initial={{ opacity: 0, x: -30 }}
-      animate={inView ? { opacity: 1, x: 0 } : {}}
-      transition={{ duration: 0.6, delay: index * 0.1 }}
+      initial={{ opacity: 0, y: 16 }}
+      animate={inView ? { opacity: 1, y: 0 } : {}}
+      transition={{ duration: 0.5, delay: index * 0.1 }}
     >
-      <motion.div className="step-num" whileHover={{ borderColor: 'rgba(201,168,76,0.8)', color: '#c9a84c' }}>
-        {step.num}
-      </motion.div>
+      <div className="step-num">{step.num}</div>
       <div className="step-content">
         <h3>{step.title}</h3>
         <p>{step.desc}</p>
@@ -33,17 +30,16 @@ function Step({ step, index }) {
 
 export default function Process() {
   return (
-    <section className="section section-charcoal" id="process">
-      <div className="container">
+    <section className="section section-navy" id="process">
+      <div className="process-inner">
         <FadeUp>
           <div className="section-header">
-            <div className="section-eyebrow"><span className="gold-line-sm"/>How It Works<span className="gold-line-sm"/></div>
-            <h2>Our <span className="gold-text">Process</span></h2>
+            <span className="section-eyebrow">How It Works</span>
+            <h2>Our <span style={{ color: 'var(--accent-lt)' }}>Process</span></h2>
             <p>A transparent, structured approach that keeps you informed and in control at every step.</p>
           </div>
         </FadeUp>
         <div className="process-steps">
-          <div className="process-line" />
           {steps.map((s, i) => <Step key={s.num} step={s} index={i} />)}
         </div>
       </div>

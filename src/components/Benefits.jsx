@@ -1,6 +1,4 @@
-import { motion } from 'framer-motion';
 import FadeUp from './FadeUp';
-import { useTilt } from '../hooks/useTilt';
 
 const benefits = [
   { icon: '◈', title: 'Tax-Free Salary', desc: 'Highly competitive, tax-free compensation benchmarked against the top 1% of hospitality roles globally.' },
@@ -11,41 +9,26 @@ const benefits = [
   { icon: '◈', title: 'Career Elevation', desc: 'Work alongside the world\'s finest hospitality professionals in an environment that demands excellence.' },
 ];
 
-function BenefitCard({ b, i }) {
-  const { ref, tiltStyle, onMouseMove, onMouseLeave } = useTilt(6);
-  return (
-    <FadeUp delay={i * 0.08} className="benefit-fadeup">
-      <motion.div
-        ref={ref}
-        className="benefit-card"
-        style={tiltStyle}
-        whileHover={{ borderColor: 'rgba(201,168,76,0.5)' }}
-        onMouseMove={onMouseMove}
-        onMouseLeave={onMouseLeave}
-      >
-        <div className="card-shine" />
-        <div className="benefit-icon">◈</div>
-        <h4>{b.title}</h4>
-        <p>{b.desc}</p>
-      </motion.div>
-    </FadeUp>
-  );
-}
-
 export default function Benefits() {
   return (
-    <section className="section section-linen" id="benefits">
+    <section className="section section-slate" id="benefits">
       <div className="container">
         <FadeUp>
           <div className="section-header">
-            <div className="section-eyebrow"><span className="gold-line-sm"/>Why Join<span className="gold-line-sm"/></div>
-            <h2>An <span className="gold-text">Exceptional Package</span></h2>
+            <span className="section-eyebrow">Why Join</span>
+            <h2>An <span style={{ color: 'var(--accent)' }}>Exceptional Package</span></h2>
             <p>Working at a Royal Palace in Saudi Arabia offers rewards that go far beyond any standard hospitality role.</p>
           </div>
         </FadeUp>
         <div className="benefits-grid">
           {benefits.map((b, i) => (
-            <BenefitCard key={b.title} b={b} i={i} />
+            <FadeUp key={b.title} delay={i * 0.08}>
+              <div className="benefit-card">
+                <div className="benefit-icon">{b.icon}</div>
+                <h4>{b.title}</h4>
+                <p>{b.desc}</p>
+              </div>
+            </FadeUp>
           ))}
         </div>
       </div>
