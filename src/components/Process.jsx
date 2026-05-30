@@ -7,7 +7,7 @@ const steps = [
   { num: '01', title: 'Discovery Brief', desc: 'We invest time understanding the palace\'s culture, standards, team dynamics, and the precise profile required, far beyond a standard job description.' },
   { num: '02', title: 'Global Search', desc: 'Our consultants activate an international network to identify both active and passive candidates, people your competitors don\'t know exist.' },
   { num: '03', title: 'Rigorous Screening', desc: 'In-depth competency interviews, reference verification, and cultural alignment assessments before a single profile is presented.' },
-  { num: '04', title: 'Curated Shortlist', desc: 'A refined shortlist of exceptional candidates with detailed profiles, interview guides, and salary benchmarks delivered within 5 business days.' },
+  { num: '04', title: 'Curated Shortlist', desc: 'A refined shortlist of exceptional candidates with detailed profiles, interview guides, and salary benchmarks delivered within 7 business days.' },
   { num: '05', title: 'Placement & Beyond', desc: 'We manage offer negotiations, relocation logistics, and remain engaged through the first 90 days to ensure a flawless start.' },
 ];
 
@@ -15,12 +15,18 @@ function Step({ step, index }) {
   const ref = useRef(null);
   const inView = useInView(ref, { once: true, margin: '0px 0px -40px 0px' });
   return (
-    <motion.div ref={ref} className="step"
-      initial={{ opacity: 0, x: -30 }}
+    <motion.div
+      ref={ref}
+      className="step"
+      initial={{ opacity: 0, x: -28 }}
       animate={inView ? { opacity: 1, x: 0 } : {}}
-      transition={{ duration: 0.6, delay: index * 0.1 }}
+      transition={{ duration: 0.7, delay: index * 0.09, ease: [0.22, 1, 0.36, 1] }}
     >
-      <motion.div className="step-num" whileHover={{ borderColor: 'rgba(201,168,76,0.8)', color: '#c9a84c' }}>
+      <motion.div
+        className="step-num"
+        whileHover={{ borderColor: 'rgba(196,150,48,0.8)', color: 'var(--gold-light)', background: 'rgba(196,150,48,0.08)' }}
+        transition={{ duration: 0.25 }}
+      >
         {step.num}
       </motion.div>
       <div className="step-content">

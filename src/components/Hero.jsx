@@ -1,9 +1,37 @@
 import { motion, useScroll, useTransform } from 'framer-motion';
 import { useRef } from 'react';
 import HeroSlideshow from './HeroSlideshow';
+import { useMagnetic } from '../hooks/useMagnetic';
 
-const container = { hidden: {}, visible: { transition: { staggerChildren: 0.18 } } };
-const item = { hidden: { opacity: 0, y: 28 }, visible: { opacity: 1, y: 0, transition: { duration: 0.9, ease: [0.25,0.1,0.25,1] } } };
+const container = {
+  hidden: {},
+  visible: { transition: { staggerChildren: 0.15, delayChildren: 0.2 } }
+};
+const item = {
+  hidden: { opacity: 0, y: 32, filter: 'blur(6px)' },
+  visible: {
+    opacity: 1, y: 0, filter: 'blur(0px)',
+    transition: { duration: 0.9, ease: [0.22, 1, 0.36, 1] }
+  }
+};
+
+function MagneticBtn({ href, className, children }) {
+  const { ref, x, y, onMouseMove, onMouseLeave } = useMagnetic(0.3);
+  return (
+    <motion.a
+      ref={ref}
+      href={href}
+      className={className}
+      style={{ x, y }}
+      onMouseMove={onMouseMove}
+      onMouseLeave={onMouseLeave}
+      whileHover={{ scale: 1.04 }}
+      whileTap={{ scale: 0.96 }}
+    >
+      {children}
+    </motion.a>
+  );
+}
 
 export default function Hero() {
   const sectionRef = useRef(null);
@@ -12,7 +40,6 @@ export default function Hero() {
     offset: ['start start', 'end start'],
   });
 
-  // Each layer moves at a different depth — creates cinematic parallax
   const yEyebrow = useTransform(scrollYProgress, [0, 1], [0, -55]);
   const yTitle   = useTransform(scrollYProgress, [0, 1], [0, -110]);
   const ySub     = useTransform(scrollYProgress, [0, 1], [0, -80]);
@@ -38,18 +65,14 @@ export default function Hero() {
           </motion.h1>
 
           <motion.p className="hero-sub" variants={item} style={{ y: ySub }}>
-            Direct Recruitment & Headhunting is exclusively retained to place
+            Direct Recruitment &amp; Headhunting is exclusively retained to place
             world-class hospitality professionals at a prestigious 5-star Royal Palace
             in Saudi Arabia, across Housekeeping, Spa, Tailoring, Culinary &amp; more.
           </motion.p>
 
           <motion.div className="hero-ctas" variants={item} style={{ y: yCtas }}>
-            <motion.a href="#roles" className="btn-gold"
-              whileHover={{ scale: 1.04 }} whileTap={{ scale: 0.97 }}
-            >Explore Open Roles</motion.a>
-            <motion.a href="#contact" className="btn-ghost"
-              whileHover={{ scale: 1.04 }} whileTap={{ scale: 0.97 }}
-            >Apply Now</motion.a>
+            <MagneticBtn href="#roles" className="btn-gold">Explore Open Roles</MagneticBtn>
+            <MagneticBtn href="#contact" className="btn-ghost">Apply Now</MagneticBtn>
           </motion.div>
 
           <motion.div className="hero-divider" variants={item} style={{ y: yStats }} />
@@ -74,9 +97,10 @@ export default function Hero() {
         </motion.div>
       </div>
 
-      <motion.div className="hero-scroll-hint"
+      <motion.div
+        className="hero-scroll-hint"
         animate={{ y: [0, 8, 0] }}
-        transition={{ duration: 2, repeat: Infinity }}
+        transition={{ duration: 2.2, repeat: Infinity, ease: 'easeInOut' }}
         style={{ opacity }}
       >
         <div className="scroll-line" />
