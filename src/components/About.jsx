@@ -1,64 +1,64 @@
-import FadeUp from './FadeUp';
+import { motion } from 'framer-motion';
 
-const credentials = [
-  { num: '5★', title: 'Exclusively Retained', desc: 'Sole recruiting partner for a prestigious Royal Palace in the Kingdom of Saudi Arabia.' },
-  { num: '45+', title: 'Countries Sourced', desc: 'A global talent network spanning five continents, from Indonesia to Europe and beyond.' },
-  { num: '100%', title: 'Discreet Operations', desc: 'Every search is conducted with absolute confidentiality. No exceptions, no compromises.' },
-  { num: '24h', title: 'Guaranteed Response', desc: 'Every application acknowledged and reviewed within 24 hours of submission.' },
-];
-
-const pillars = [
-  { icon: '◈', title: 'Uncompromising Excellence', desc: 'Our standard is not the industry\'s best, it is the palace\'s finest. We present only the exceptional.' },
-  { icon: '◈', title: 'Absolute Discretion', desc: 'Every search, every placement, every conversation conducted with complete confidentiality.' },
-  { icon: '◈', title: 'Precision Placement', desc: 'We do not submit candidates. We curate, verify, and present world-class professionals.' },
+const services = [
+  {
+    icon: '◈',
+    title: 'Executive Search',
+    subtitle: 'For C-Suite & Director Level',
+    desc: 'Confidential, targeted headhunting for senior hospitality leaders. We map the market, identify passive candidates and deliver the exceptional.',
+    color: '#C9A84C',
+  },
+  {
+    icon: '◇',
+    title: 'Contingency Recruitment',
+    subtitle: 'For Specialist Roles',
+    desc: 'Fast, quality-driven placement for specialist hospitality positions. You only pay on successful placement — zero risk, premium results.',
+    color: '#00D4FF',
+  },
+  {
+    icon: '◉',
+    title: 'Team Build',
+    subtitle: 'For Full Department Staffing',
+    desc: 'Build entire hospitality teams from scratch. From pre-opening hotels to private estates, we staff complete operations with vetted talent.',
+    color: '#C9A84C',
+  },
 ];
 
 export default function About() {
   return (
-    <section className="section section-slate" id="about">
-      <div className="about-inner">
-        <FadeUp>
-          <div>
-            <div className="about-eyebrow">About Direct Recruiting</div>
-            <h2 className="about-title">We Build <span style={{ color: 'var(--accent)' }}>Legacies.</span></h2>
-            <p className="about-body">
-              Direct Recruitment &amp; Headhunting operates at the intersection of luxury
-              hospitality and exceptional human talent. We are exclusively retained to
-              place world-class professionals inside one of the most prestigious private
-              palaces in the Kingdom of Saudi Arabia, an environment where only the
-              finest will do.
-            </p>
-            <p className="about-body">
-              We don't operate like a traditional recruitment agency. We think like a
-              luxury brand, act with the precision of a private concierge, and deliver
-              with the discretion expected at the highest levels of royal service.
-            </p>
-            <div className="about-creds">
-              {credentials.map((c) => (
-                <div key={c.title} className="about-cred">
-                  <div className="about-cred-num">{c.num}</div>
-                  <div className="about-cred-text">
-                    <h4>{c.title}</h4>
-                    <p>{c.desc}</p>
-                  </div>
-                </div>
-              ))}
-            </div>
-          </div>
-        </FadeUp>
+    <section id="services" style={{ background: '#060B18', padding: '120px 5vw' }}>
+      <div style={{ maxWidth: '1200px', margin: '0 auto' }}>
+        <motion.div initial={{ opacity: 0, y: 32 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }}
+          style={{ textAlign: 'center', marginBottom: '80px' }}
+        >
+          <span style={{ color: '#C9A84C', fontSize: '11px', letterSpacing: '0.3em', textTransform: 'uppercase', fontWeight: 600 }}>Our Services</span>
+          <h2 style={{ fontFamily: "'Cormorant Garamond', serif", fontSize: 'clamp(42px, 5vw, 68px)', fontWeight: 400, marginTop: '16px', color: '#F5F0E8', lineHeight: 1.1 }}>
+            Recruitment Excellence<br /><span className="text-gradient-gold">Across Every Level</span>
+          </h2>
+        </motion.div>
 
-        <div>
-          <div className="about-pillars">
-            {pillars.map((p, i) => (
-              <FadeUp key={p.title} delay={i * 0.1}>
-                <div className="about-pillar">
-                  <div className="about-pillar-icon">{p.icon}</div>
-                  <h3>{p.title}</h3>
-                  <p>{p.desc}</p>
-                </div>
-              </FadeUp>
-            ))}
-          </div>
+        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))', gap: '24px' }}>
+          {services.map((s, i) => (
+            <motion.div key={s.title}
+              initial={{ opacity: 0, y: 40 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }}
+              transition={{ delay: i * 0.15 }}
+              whileHover={{ y: -8 }}
+              style={{
+                padding: '48px 40px',
+                background: 'rgba(255,255,255,0.03)',
+                border: '1px solid rgba(255,255,255,0.07)',
+                borderRadius: '12px',
+                backdropFilter: 'blur(10px)',
+                cursor: 'default',
+                transition: 'border-color 0.3s',
+              }}
+            >
+              <div style={{ fontSize: '36px', color: s.color, marginBottom: '24px' }}>{s.icon}</div>
+              <div style={{ fontSize: '10px', letterSpacing: '0.2em', color: s.color, textTransform: 'uppercase', marginBottom: '12px' }}>{s.subtitle}</div>
+              <h3 style={{ fontFamily: "'Cormorant Garamond', serif", fontSize: '28px', fontWeight: 500, color: '#F5F0E8', marginBottom: '16px' }}>{s.title}</h3>
+              <p style={{ color: '#64748B', lineHeight: 1.7, fontSize: '15px' }}>{s.desc}</p>
+            </motion.div>
+          ))}
         </div>
       </div>
     </section>

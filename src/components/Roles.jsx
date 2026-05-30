@@ -1,79 +1,48 @@
-import { motion, useInView } from 'framer-motion';
-import { useRef } from 'react';
-import FadeUp from './FadeUp';
+import { motion } from 'framer-motion';
 
 const roles = [
-  {
-    title: 'Housekeeping Staff',
-    category: 'Accommodation',
-    level: 'Mid–Senior Level',
-    tag: 'Multiple Openings',
-  },
-  {
-    title: 'Laundry Supervisor',
-    category: 'Housekeeping Operations',
-    level: 'Supervisor',
-    tag: 'Urgent Hire',
-  },
-  {
-    title: 'Spa Therapist',
-    category: 'Wellness & Beauty',
-    level: 'Senior Level',
-    tag: 'Multiple Openings',
-  },
-  {
-    title: 'Digital Tailor',
-    category: 'Fashion & Haute Couture',
-    level: 'Expert Level',
-    tag: 'Specialist Role',
-  },
-  {
-    title: 'Butler / Personal Attendant',
-    category: 'Guest Services',
-    level: 'Senior Level',
-    tag: 'Confidential',
-  },
-  {
-    title: 'Executive Chef',
-    category: 'Culinary Arts',
-    level: 'Executive Level',
-    tag: 'Senior Appointment',
-  },
-  {
-    title: 'Female Hairdresser',
-    category: 'Beauty & Wellness',
-    level: 'Senior Level',
-    tag: 'Multiple Openings',
-  },
-  {
-    title: 'Barista',
-    category: 'Food & Beverage',
-    level: 'Mid–Senior Level',
-    tag: 'Specialist Role',
-  },
+  { icon: '🛏', title: 'Housekeeping Staff', desc: 'Meticulous room attendants and housekeeping supervisors trained to 5-star standards.', color: '#C9A84C' },
+  { icon: '👔', title: 'Laundry Supervisor', desc: 'Expert textile care professionals managing luxury linen and garment operations.', color: '#00D4FF' },
+  { icon: '💆', title: 'Spa Therapist', desc: 'Certified wellness professionals delivering transformative luxury spa experiences.', color: '#C9A84C' },
+  { icon: '✂️', title: 'Digital Tailor', desc: 'Precision tailoring specialists blending traditional craftsmanship with modern techniques.', color: '#00D4FF' },
+  { icon: '🎩', title: 'Butler / Personal Assistant', desc: 'Elite personal service professionals providing seamless, discreet concierge excellence.', color: '#C9A84C' },
+  { icon: '👨‍🍳', title: 'Executive Chef', desc: 'Culinary directors creating extraordinary dining experiences for discerning guests.', color: '#00D4FF' },
+  { icon: '💇', title: 'Female Hairdresser', desc: 'Expert stylists and colourists delivering bespoke beauty and grooming services.', color: '#C9A84C' },
+  { icon: '☕', title: 'Barista', desc: 'Specialty coffee artisans crafting world-class beverage experiences.', color: '#00D4FF' },
 ];
 
 function RoleCard({ role, index }) {
-  const ref = useRef(null);
-  const inView = useInView(ref, { once: true, margin: '0px 0px -40px 0px' });
   return (
     <motion.div
-      ref={ref}
-      className="role-card"
-      initial={{ opacity: 0, y: 12 }}
-      animate={inView ? { opacity: 1, y: 0 } : {}}
-      transition={{ duration: 0.4, delay: index * 0.05 }}
+      initial={{ opacity: 0, y: 48 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true }}
+      transition={{ delay: index * 0.08 }}
+      whileHover={{ y: -12, rotateX: 4, rotateY: 4, scale: 1.02 }}
+      style={{
+        padding: '40px 32px',
+        background: 'rgba(255,255,255,0.03)',
+        border: '1px solid rgba(255,255,255,0.06)',
+        borderRadius: '12px',
+        cursor: 'pointer',
+        transformStyle: 'preserve-3d',
+        transition: 'border-color 0.3s',
+        position: 'relative',
+        overflow: 'hidden',
+      }}
+      onHoverStart={e => { e.currentTarget.style.borderColor = role.color + '40'; e.currentTarget.style.boxShadow = `0 20px 60px ${role.color}15`; }}
+      onHoverEnd={e => { e.currentTarget.style.borderColor = 'rgba(255,255,255,0.06)'; e.currentTarget.style.boxShadow = 'none'; }}
     >
-      <div className="role-card-left">
-        <div className="role-card-title">{role.title}</div>
-        <div className="role-card-meta">
-          <span className="role-tag">{role.tag || role.category}</span>
-          {role.level && <span className="role-tag-neutral">{role.level}</span>}
-          <span className="role-location">Saudi Arabia · On-site</span>
-        </div>
-      </div>
-      <div className="role-card-right">
-        <a href="#contact" className="btn-primary btn-sm">Apply Now →</a>
+      {/* Background glow */}
+      <div style={{ position: 'absolute', top: 0, right: 0, width: '120px', height: '120px', background: `radial-gradient(circle, ${role.color}10 0%, transparent 70%)`, pointerEvents: 'none' }} />
+
+      <div style={{ fontSize: '40px', marginBottom: '20px' }}>{role.icon}</div>
+      <h3 style={{ fontFamily: "'Cormorant Garamond', serif", fontSize: '22px', fontWeight: 500, color: '#F5F0E8', marginBottom: '12px' }}>{role.title}</h3>
+      <p style={{ color: '#4A5568', fontSize: '14px', lineHeight: 1.7 }}>{role.desc}</p>
+
+      <div style={{ marginTop: '24px', display: 'flex', alignItems: 'center', gap: '8px', color: role.color, fontSize: '12px', letterSpacing: '0.1em', textTransform: 'uppercase', fontWeight: 600 }}>
+        <span>View Candidates</span>
+        <svg width="14" height="14" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
       </div>
     </motion.div>
   );
@@ -81,26 +50,23 @@ function RoleCard({ role, index }) {
 
 export default function Roles() {
   return (
-    <section className="section section-white" id="roles">
-      <div className="roles-section-inner">
+    <section id="talent" style={{ background: '#03060D', padding: '120px 5vw' }}>
+      <div style={{ maxWidth: '1280px', margin: '0 auto' }}>
+        <motion.div initial={{ opacity: 0, y: 32 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }}
+          style={{ textAlign: 'center', marginBottom: '80px' }}
+        >
+          <span style={{ color: '#C9A84C', fontSize: '11px', letterSpacing: '0.3em', textTransform: 'uppercase', fontWeight: 600 }}>Talent Categories</span>
+          <h2 style={{ fontFamily: "'Cormorant Garamond', serif", fontSize: 'clamp(42px, 5vw, 68px)', fontWeight: 400, marginTop: '16px', color: '#F5F0E8', lineHeight: 1.1 }}>
+            Premium Professionals<br /><span className="text-gradient-gold">For Every Role</span>
+          </h2>
+          <p style={{ color: '#64748B', marginTop: '20px', maxWidth: '500px', margin: '20px auto 0', fontSize: '16px', lineHeight: 1.7 }}>
+            Every candidate is personally vetted, interviewed and briefed before being presented to you.
+          </p>
+        </motion.div>
 
-        <FadeUp>
-          <div className="section-header">
-            <span className="section-eyebrow">Open Positions</span>
-            <h2>Roles at the <span style={{ color: 'var(--accent)' }}>Royal Palace</span></h2>
-            <p>Exclusively retained to place world-class professionals at a prestigious
-              5-star Royal Palace in Saudi Arabia, with exceptional tax-free packages.</p>
-          </div>
-        </FadeUp>
-
-        <div className="info-banner">
-          <strong>Application note:</strong> All candidates must provide letters of experience from previous employers. Certificates or diplomas are a strong advantage.
+        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(280px, 1fr))', gap: '20px', perspective: '1000px' }}>
+          {roles.map((r, i) => <RoleCard key={r.title} role={r} index={i} />)}
         </div>
-
-        <div className="roles-list">
-          {roles.map((role, i) => <RoleCard key={role.title} role={role} index={i} />)}
-        </div>
-
       </div>
     </section>
   );

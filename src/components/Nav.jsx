@@ -6,58 +6,87 @@ export default function Nav() {
   const [menuOpen, setMenuOpen] = useState(false);
 
   useEffect(() => {
-    const onScroll = () => setScrolled(window.scrollY > 30);
+    const onScroll = () => setScrolled(window.scrollY > 40);
     window.addEventListener('scroll', onScroll);
     return () => window.removeEventListener('scroll', onScroll);
   }, []);
 
-  const links = ['Roles', 'Benefits', 'Process', 'Why Us'];
+  const links = ['Services', 'Talent', 'Process', 'Why Us', 'Contact'];
 
   return (
     <motion.nav
-      className={`nav ${scrolled ? 'scrolled' : ''}`}
-      initial={{ y: -80, opacity: 0 }}
-      animate={{ y: 0, opacity: 1 }}
-      transition={{ duration: 0.6, ease: 'easeOut' }}
+      style={{
+        position: 'fixed', top: 0, left: 0, right: 0, zIndex: 100,
+        background: scrolled ? 'rgba(6,11,24,0.92)' : 'transparent',
+        backdropFilter: scrolled ? 'blur(20px)' : 'none',
+        borderBottom: scrolled ? '1px solid rgba(201,168,76,0.15)' : 'none',
+        transition: 'all 0.4s ease',
+        padding: '0 5vw',
+        height: scrolled ? '64px' : '80px',
+        display: 'flex', alignItems: 'center', justifyContent: 'space-between',
+      }}
     >
-      <a href="#hero" className="nav-logo">
-        <img src={`${import.meta.env.BASE_URL}logo-new.png`} alt="Direct Recruiting & Headhunting" style={{ height: '36px', width: 'auto' }} />
+      {/* Logo */}
+      <a href="#" style={{ display: 'flex', alignItems: 'center', gap: '12px', textDecoration: 'none' }}>
+        <div style={{
+          width: '40px', height: '40px',
+          background: 'linear-gradient(135deg, #C9A84C, #E8C96A)',
+          borderRadius: '8px',
+          display: 'flex', alignItems: 'center', justifyContent: 'center',
+          fontFamily: "'Cormorant Garamond', serif",
+          fontWeight: 600, fontSize: '18px', color: '#060B18',
+        }}>DR</div>
+        <div>
+          <div style={{ fontFamily: "'Cormorant Garamond', serif", fontSize: '16px', fontWeight: 600, color: '#F5F0E8', letterSpacing: '0.05em' }}>DIRECT RECRUITING</div>
+          <div style={{ fontSize: '9px', letterSpacing: '0.2em', color: '#C9A84C', textTransform: 'uppercase' }}>Executive Headhunting</div>
+        </div>
       </a>
 
-      <ul className="nav-links">
-        {links.map((l, i) => (
-          <motion.li key={l}
-            initial={{ opacity: 0, y: -10 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.1 + i * 0.08 }}
-          >
-            <a href={`#${l.toLowerCase().replace(' ', '-')}`}>{l}</a>
-          </motion.li>
+      {/* Desktop Links */}
+      <div style={{ display: 'flex', gap: '36px', alignItems: 'center' }} className="hidden md:flex">
+        {links.map(l => (
+          <a key={l} href={`#${l.toLowerCase().replace(' ', '-')}`}
+            style={{ color: '#C8C0B0', fontSize: '13px', letterSpacing: '0.1em', textDecoration: 'none', textTransform: 'uppercase', transition: 'color 0.2s' }}
+            onMouseEnter={e => e.target.style.color = '#C9A84C'}
+            onMouseLeave={e => e.target.style.color = '#C8C0B0'}
+          >{l}</a>
         ))}
-        <motion.li initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 0.5 }}>
-          <a href="#contact" className="btn-nav">Get in Touch</a>
-        </motion.li>
-      </ul>
+        <motion.a href="#contact"
+          whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}
+          style={{
+            padding: '10px 24px',
+            background: 'linear-gradient(135deg, #C9A84C, #E8C96A)',
+            color: '#060B18', fontWeight: 700, fontSize: '12px',
+            letterSpacing: '0.15em', textTransform: 'uppercase',
+            borderRadius: '4px', textDecoration: 'none',
+          }}
+        >Hire Talent</motion.a>
+      </div>
 
-      <button className="hamburger" onClick={() => setMenuOpen(o => !o)} aria-label="Menu">
-        <span style={{ transform: menuOpen ? 'rotate(45deg) translate(5px,5px)' : 'none' }} />
-        <span style={{ opacity: menuOpen ? 0 : 1 }} />
-        <span style={{ transform: menuOpen ? 'rotate(-45deg) translate(5px,-5px)' : 'none' }} />
+      {/* Mobile burger */}
+      <button onClick={() => setMenuOpen(!menuOpen)}
+        style={{ background: 'none', border: 'none', color: '#C9A84C', cursor: 'pointer', padding: '8px', display: 'none' }}
+        className="flex md:hidden"
+      >
+        <svg width="24" height="24" fill="none" stroke="currentColor" strokeWidth="2">
+          {menuOpen ? <><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></> : <><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></>}
+        </svg>
       </button>
 
       <AnimatePresence>
         {menuOpen && (
-          <motion.div className="mobile-menu open"
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            exit={{ opacity: 0 }}
-            transition={{ duration: 0.2 }}
+          <motion.div initial={{ opacity: 0, y: -20 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0, y: -20 }}
+            style={{
+              position: 'absolute', top: '100%', left: 0, right: 0,
+              background: 'rgba(6,11,24,0.97)', backdropFilter: 'blur(20px)',
+              borderBottom: '1px solid rgba(201,168,76,0.2)',
+              padding: '24px 5vw', display: 'flex', flexDirection: 'column', gap: '20px',
+            }}
           >
-            <button className="mobile-close" onClick={() => setMenuOpen(false)}>×</button>
-            {[...links, 'Contact'].map(l => (
+            {links.map(l => (
               <a key={l} href={`#${l.toLowerCase().replace(' ', '-')}`}
-                className={`mobile-link ${l === 'Contact' ? 'cta' : ''}`}
                 onClick={() => setMenuOpen(false)}
+                style={{ color: '#F5F0E8', fontSize: '18px', textDecoration: 'none', fontFamily: "'Cormorant Garamond', serif" }}
               >{l}</a>
             ))}
           </motion.div>
