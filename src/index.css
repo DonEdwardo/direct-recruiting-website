@@ -1,5 +1,5 @@
-@import "tailwindcss";
 @import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500;600&family=Inter:wght@300;400;500;600;700&display=swap');
+@import "tailwindcss";
 
 /* Spotlight animation */
 @keyframes spotlight { 0%{opacity:0;transform:translate(-72%,-62%) scale(0.5)} 100%{opacity:1;transform:translate(-50%,-40%) scale(1)} }

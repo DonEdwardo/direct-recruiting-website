@@ -41,15 +41,25 @@ export default function Benefits() {
               initial={{ opacity: 0, y: 48 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }}
               transition={{ delay: i * 0.15 }}
               whileHover={{ y: -8 }}
-              style={{ padding: '48px 40px', background: 'rgba(255,255,255,0.03)', border: '1px solid rgba(201,168,76,0.1)', borderRadius: '12px', backdropFilter: 'blur(10px)' }}
+              style={{
+                padding: '48px 40px',
+                background: 'rgba(255,255,255,0.03)',
+                border: '1px solid rgba(201,168,76,0.1)',
+                borderRadius: '12px',
+                backdropFilter: 'blur(10px)',
+                position: 'relative',
+              }}
             >
-              <div style={{ fontFamily: 'Georgia, serif', fontSize: '80px', color: 'rgba(201,168,76,0.15)', lineHeight: 0.8, marginBottom: '24px' }}>"</div>
+              <div style={{ fontFamily: 'Georgia, serif', fontSize: '80px', color: 'rgba(201,168,76,0.15)', lineHeight: 0.8, marginBottom: '24px', display: 'block' }}>"</div>
+
               <div style={{ display: 'flex', gap: '4px', marginBottom: '20px' }}>
                 {[...Array(t.rating)].map((_, j) => (
                   <span key={j} style={{ color: '#C9A84C', fontSize: '14px' }}>★</span>
                 ))}
               </div>
+
               <p style={{ color: '#94A3B8', lineHeight: 1.8, fontSize: '15px', fontStyle: 'italic', marginBottom: '32px' }}>"{t.quote}"</p>
+
               <div style={{ borderTop: '1px solid rgba(255,255,255,0.06)', paddingTop: '24px' }}>
                 <div style={{ color: '#F5F0E8', fontWeight: 600, fontSize: '15px' }}>{t.name}</div>
                 <div style={{ color: '#C9A84C', fontSize: '12px', letterSpacing: '0.05em', marginTop: '4px' }}>{t.title}</div>
