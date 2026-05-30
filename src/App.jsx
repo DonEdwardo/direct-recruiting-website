@@ -1,5 +1,5 @@
 import Nav from './components/Nav';
-import Hero from './components/Hero';
+import Hero from './components/Hero.tsx';
 import About from './components/About';
 import Roles from './components/Roles';
 import Benefits from './components/Benefits';
