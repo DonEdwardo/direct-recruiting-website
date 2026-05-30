@@ -1,72 +1,169 @@
 import { motion } from 'framer-motion';
+import { useInView } from 'framer-motion';
+import { useRef } from 'react';
+import FadeUp from './FadeUp';
+import { useTilt } from '../hooks/useTilt';
 
 const roles = [
-  { icon: '🛏', title: 'Housekeeping Staff', desc: 'Meticulous room attendants and housekeeping supervisors trained to 5-star standards.', color: '#C9A84C' },
-  { icon: '👔', title: 'Laundry Supervisor', desc: 'Expert textile care professionals managing luxury linen and garment operations.', color: '#00D4FF' },
-  { icon: '💆', title: 'Spa Therapist', desc: 'Certified wellness professionals delivering transformative luxury spa experiences.', color: '#C9A84C' },
-  { icon: '✂️', title: 'Digital Tailor', desc: 'Precision tailoring specialists blending traditional craftsmanship with modern techniques.', color: '#00D4FF' },
-  { icon: '🎩', title: 'Butler / Personal Assistant', desc: 'Elite personal service professionals providing seamless, discreet concierge excellence.', color: '#C9A84C' },
-  { icon: '👨‍🍳', title: 'Executive Chef', desc: 'Culinary directors creating extraordinary dining experiences for discerning guests.', color: '#00D4FF' },
-  { icon: '💇', title: 'Female Hairdresser', desc: 'Expert stylists and colourists delivering bespoke beauty and grooming services.', color: '#C9A84C' },
-  { icon: '☕', title: 'Barista', desc: 'Specialty coffee artisans crafting world-class beverage experiences.', color: '#00D4FF' },
+  {
+    title: 'Housekeeping Staff',
+    category: 'Accommodation',
+    level: 'Mid–Senior Level',
+    requirements: ['3+ years luxury hotel or palace experience', 'Impeccable attention to detail'],
+    img: 'https://images.unsplash.com/photo-1631049307264-da0ec9d70304?w=800&q=85&fit=crop',
+    tag: 'Multiple Openings',
+  },
+  {
+    title: 'Laundry Supervisor',
+    category: 'Housekeeping Operations',
+    level: 'Supervisor',
+    requirements: ['5+ years laundry management', 'Expert knowledge of luxury textiles'],
+    img: 'https://images.unsplash.com/photo-1558769132-cb1aea458c5e?w=800&q=85&fit=crop',
+    tag: 'Urgent Hire',
+  },
+  {
+    title: 'Spa Therapist',
+    category: 'Wellness & Beauty',
+    level: 'Senior Level',
+    requirements: ['Certified in multiple therapy disciplines', '4+ years luxury spa experience'],
+    img: 'https://images.unsplash.com/photo-1540555700478-4be289fbecef?w=800&q=85&fit=crop',
+    tag: 'Multiple Openings',
+  },
+  {
+    title: 'Digital Tailor',
+    category: 'Fashion & Haute Couture',
+    level: 'Expert Level',
+    requirements: ['Expert in bespoke tailoring', 'CAD / digital pattern-cutting skills'],
+    img: 'https://images.unsplash.com/photo-1556905055-8f358a7a47b2?w=800&q=85&fit=crop',
+    tag: 'Specialist Role',
+  },
+  {
+    title: 'Butler / Personal Attendant',
+    category: 'Guest Services',
+    level: 'Senior Level',
+    requirements: ['Formal butler training preferred', '5+ years UHNWI private service'],
+    img: 'https://images.unsplash.com/photo-1551882547-ff40c63fe5fa?w=800&q=85&fit=crop',
+    tag: 'Confidential',
+  },
+  {
+    title: 'Executive Chef',
+    category: 'Culinary Arts',
+    level: 'Executive Level',
+    requirements: ['Michelin-starred or equivalent background', 'Middle Eastern cuisine knowledge'],
+    img: 'https://images.unsplash.com/photo-1577219491135-ce391730fb2c?w=800&q=85&fit=crop',
+    tag: 'Senior Appointment',
+  },
+  {
+    title: 'Female Hairdresser',
+    category: 'Beauty & Wellness',
+    level: 'Senior Level',
+    requirements: ['Professional cosmetology certification', '4+ years luxury salon experience'],
+    img: 'https://images.unsplash.com/photo-1522337360788-8b13dee7a37e?w=800&q=85&fit=crop',
+    tag: 'Multiple Openings',
+  },
+  {
+    title: 'Barista',
+    category: 'Food & Beverage',
+    level: 'Mid–Senior Level',
+    requirements: ['Barista certification or equivalent', '3+ years specialty coffee experience'],
+    img: 'https://images.unsplash.com/photo-1495474472287-4d71bcdd2085?w=800&q=85&fit=crop',
+    tag: 'Specialist Role',
+  },
 ];
 
+const perks = ['Tax-Free Salary', 'Full Accommodation', 'Return Flights', 'Medical Insurance'];
+
 function RoleCard({ role, index }) {
+  const inViewRef = useRef(null);
+  const inView = useInView(inViewRef, { once: true, margin: '0px 0px -40px 0px' });
+  const { ref: tiltRef, tiltStyle, onMouseMove, onMouseLeave } = useTilt(8);
+
   return (
-    <motion.div
-      initial={{ opacity: 0, y: 48 }}
-      whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once: true }}
-      transition={{ delay: index * 0.08 }}
-      whileHover={{ y: -12, rotateX: 4, rotateY: 4, scale: 1.02 }}
-      style={{
-        padding: '40px 32px',
-        background: 'rgba(255,255,255,0.03)',
-        border: '1px solid rgba(255,255,255,0.06)',
-        borderRadius: '12px',
-        cursor: 'pointer',
-        transformStyle: 'preserve-3d',
-        transition: 'border-color 0.3s',
-        position: 'relative',
-        overflow: 'hidden',
-      }}
-      onHoverStart={e => { e.currentTarget.style.borderColor = role.color + '40'; e.currentTarget.style.boxShadow = `0 20px 60px ${role.color}15`; }}
-      onHoverEnd={e => { e.currentTarget.style.borderColor = 'rgba(255,255,255,0.06)'; e.currentTarget.style.boxShadow = 'none'; }}
-    >
-      {/* Background glow */}
-      <div style={{ position: 'absolute', top: 0, right: 0, width: '120px', height: '120px', background: `radial-gradient(circle, ${role.color}10 0%, transparent 70%)`, pointerEvents: 'none' }} />
-
-      <div style={{ fontSize: '40px', marginBottom: '20px' }}>{role.icon}</div>
-      <h3 style={{ fontFamily: "'Cormorant Garamond', serif", fontSize: '22px', fontWeight: 500, color: '#F5F0E8', marginBottom: '12px' }}>{role.title}</h3>
-      <p style={{ color: '#4A5568', fontSize: '14px', lineHeight: 1.7 }}>{role.desc}</p>
-
-      <div style={{ marginTop: '24px', display: 'flex', alignItems: 'center', gap: '8px', color: role.color, fontSize: '12px', letterSpacing: '0.1em', textTransform: 'uppercase', fontWeight: 600 }}>
-        <span>View Candidates</span>
-        <svg width="14" height="14" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
-      </div>
-    </motion.div>
+    <div ref={inViewRef}>
+      <motion.div
+        ref={tiltRef}
+        className="role-card"
+        style={tiltStyle}
+        initial={{ opacity: 0, y: 36 }}
+        animate={inView ? { opacity: 1, y: 0 } : {}}
+        transition={{ duration: 0.65, delay: (index % 3) * 0.09 }}
+        onMouseMove={onMouseMove}
+        onMouseLeave={onMouseLeave}
+      >
+        <div className="card-shine" />
+        <div className="role-img-wrap">
+          <img src={role.img} alt={role.title} className="role-img" loading="lazy" />
+          <div className="role-img-overlay" />
+          <div className="role-tag">{role.tag}</div>
+          <div className="role-img-title">
+            <div className="role-category-sm">{role.category}</div>
+            <h3>{role.title}</h3>
+          </div>
+        </div>
+        <div className="role-body">
+          <div className="role-level">{role.level}</div>
+          <ul className="role-reqs">
+            {role.requirements.map(r => <li key={r}>{r}</li>)}
+          </ul>
+          <motion.a href="#contact" className="btn-gold btn-sm btn-full"
+            whileHover={{ scale: 1.02 }} whileTap={{ scale: 0.97 }}
+          >Apply Now</motion.a>
+        </div>
+      </motion.div>
+    </div>
   );
 }
 
 export default function Roles() {
   return (
-    <section id="talent" style={{ background: '#03060D', padding: '120px 5vw' }}>
-      <div style={{ maxWidth: '1280px', margin: '0 auto' }}>
-        <motion.div initial={{ opacity: 0, y: 32 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }}
-          style={{ textAlign: 'center', marginBottom: '80px' }}
-        >
-          <span style={{ color: '#C9A84C', fontSize: '11px', letterSpacing: '0.3em', textTransform: 'uppercase', fontWeight: 600 }}>Talent Categories</span>
-          <h2 style={{ fontFamily: "'Cormorant Garamond', serif", fontSize: 'clamp(42px, 5vw, 68px)', fontWeight: 400, marginTop: '16px', color: '#F5F0E8', lineHeight: 1.1 }}>
-            Premium Professionals<br /><span className="text-gradient-gold">For Every Role</span>
-          </h2>
-          <p style={{ color: '#64748B', marginTop: '20px', maxWidth: '500px', margin: '20px auto 0', fontSize: '16px', lineHeight: 1.7 }}>
-            Every candidate is personally vetted, interviewed and briefed before being presented to you.
-          </p>
-        </motion.div>
+    <section className="section section-dark" id="roles">
+      <div className="container">
 
-        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(280px, 1fr))', gap: '20px', perspective: '1000px' }}>
-          {roles.map((r, i) => <RoleCard key={r.title} role={r} index={i} />)}
+        <FadeUp>
+          <div className="section-header">
+            <div className="section-eyebrow"><span className="gold-line-sm"/>Open Positions<span className="gold-line-sm"/></div>
+            <h2>Roles at the <span className="gold-text">Royal Palace</span></h2>
+            <p>Exclusively retained to place world-class professionals at a prestigious
+              5-star Royal Palace in Saudi Arabia, with exceptional tax-free packages.</p>
+          </div>
+        </FadeUp>
+
+        <FadeUp delay={0.08}>
+          <div className="perks-strip">
+            <div className="perks-strip-bg">
+              <img src="https://images.unsplash.com/photo-1566073771259-6a8506099945?w=1400&q=80&fit=crop&crop=center" alt="Palace" />
+            </div>
+            <div className="perks-strip-inner">
+              <div className="perks-strip-label">
+                <span className="palace-stars-sm">★★★★★</span>
+                <span>Royal Palace, Kingdom of Saudi Arabia</span>
+              </div>
+              <div className="perks-strip-items">
+                {perks.map(p => (
+                  <div key={p} className="perks-strip-item">
+                    <span className="perks-strip-dot">◆</span>
+                    {p}
+                  </div>
+                ))}
+              </div>
+            </div>
+          </div>
+        </FadeUp>
+
+        <FadeUp delay={0.1}>
+          <div className="candidate-notice">
+            <div className="candidate-notice-icon">◈</div>
+            <div>
+              <h4>Application Requirements</h4>
+              <p>All candidates must provide <strong>letters of experience from previous employers</strong>. Any relevant <strong>certificates or diplomas</strong> are a strong advantage.</p>
+            </div>
+          </div>
+        </FadeUp>
+
+        <div className="roles-grid">
+          {roles.map((role, i) => <RoleCard key={role.title} role={role} index={i} />)}
         </div>
+
       </div>
     </section>
   );

@@ -1,70 +1,51 @@
 import { motion } from 'framer-motion';
+import FadeUp from './FadeUp';
+import { useTilt } from '../hooks/useTilt';
 
-const testimonials = [
-  {
-    quote: "Direct Recruiting found us a world-class Executive Chef within 6 days. The calibre of candidates was extraordinary — exactly what our royal estate required.",
-    name: "Estate Manager",
-    title: "Royal Private Estate, Riyadh",
-    rating: 5,
-  },
-  {
-    quote: "The team's understanding of luxury hospitality standards is unmatched. Every placement they've made for our resort has exceeded expectations.",
-    name: "General Manager",
-    title: "Luxury Resort, Dubai",
-    rating: 5,
-  },
-  {
-    quote: "Professional, discreet and incredibly effective. They staffed our entire spa team in under three weeks. Remarkable service.",
-    name: "Wellness Director",
-    title: "Five-Star Hotel Group, Jeddah",
-    rating: 5,
-  },
+const benefits = [
+  { icon: '◈', title: 'Tax-Free Salary', desc: 'Highly competitive, tax-free compensation benchmarked against the top 1% of hospitality roles globally.' },
+  { icon: '◈', title: 'Accommodation', desc: 'Fully furnished, comfortable staff accommodation provided on or near the palace estate at no cost.' },
+  { icon: '◈', title: 'Return Flights', desc: 'Annual return flights to your home country fully covered as part of your employment contract.' },
+  { icon: '◈', title: 'Medical Insurance', desc: 'Comprehensive private medical and dental cover for you and, in senior roles, your immediate family.' },
+  { icon: '◈', title: 'Cultural Experience', desc: 'A once-in-a-lifetime opportunity to live and work in one of the world\'s most fascinating kingdoms.' },
+  { icon: '◈', title: 'Career Elevation', desc: 'Work alongside the world\'s finest hospitality professionals in an environment that demands excellence.' },
 ];
+
+function BenefitCard({ b, i }) {
+  const { ref, tiltStyle, onMouseMove, onMouseLeave } = useTilt(6);
+  return (
+    <FadeUp delay={i * 0.08} className="benefit-fadeup">
+      <motion.div
+        ref={ref}
+        className="benefit-card"
+        style={tiltStyle}
+        whileHover={{ borderColor: 'rgba(196,150,48,0.4)' }}
+        onMouseMove={onMouseMove}
+        onMouseLeave={onMouseLeave}
+      >
+        <div className="card-shine" />
+        <div className="benefit-icon">◈</div>
+        <h4>{b.title}</h4>
+        <p>{b.desc}</p>
+      </motion.div>
+    </FadeUp>
+  );
+}
 
 export default function Benefits() {
   return (
-    <section id="testimonials" style={{ background: '#060B18', padding: '120px 5vw', position: 'relative', overflow: 'hidden' }}>
-      <div className="dot-grid" style={{ position: 'absolute', inset: 0, opacity: 0.2 }} />
-      <div style={{ maxWidth: '1200px', margin: '0 auto', position: 'relative', zIndex: 1 }}>
-        <motion.div initial={{ opacity: 0, y: 32 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }}
-          style={{ textAlign: 'center', marginBottom: '80px' }}
-        >
-          <span style={{ color: '#C9A84C', fontSize: '11px', letterSpacing: '0.3em', textTransform: 'uppercase', fontWeight: 600 }}>Client Testimonials</span>
-          <h2 style={{ fontFamily: "'Cormorant Garamond', serif", fontSize: 'clamp(42px, 5vw, 68px)', fontWeight: 400, marginTop: '16px', color: '#F5F0E8', lineHeight: 1.1 }}>
-            Trusted by the<br /><span className="text-gradient-gold">World's Finest</span>
-          </h2>
-        </motion.div>
-
-        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(320px, 1fr))', gap: '24px' }}>
-          {testimonials.map((t, i) => (
-            <motion.div key={i}
-              initial={{ opacity: 0, y: 48 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }}
-              transition={{ delay: i * 0.15 }}
-              whileHover={{ y: -8 }}
-              style={{
-                padding: '48px 40px',
-                background: 'rgba(255,255,255,0.03)',
-                border: '1px solid rgba(201,168,76,0.1)',
-                borderRadius: '12px',
-                backdropFilter: 'blur(10px)',
-                position: 'relative',
-              }}
-            >
-              <div style={{ fontFamily: 'Georgia, serif', fontSize: '80px', color: 'rgba(201,168,76,0.15)', lineHeight: 0.8, marginBottom: '24px', display: 'block' }}>"</div>
-
-              <div style={{ display: 'flex', gap: '4px', marginBottom: '20px' }}>
-                {[...Array(t.rating)].map((_, j) => (
-                  <span key={j} style={{ color: '#C9A84C', fontSize: '14px' }}>★</span>
-                ))}
-              </div>
-
-              <p style={{ color: '#94A3B8', lineHeight: 1.8, fontSize: '15px', fontStyle: 'italic', marginBottom: '32px' }}>"{t.quote}"</p>
-
-              <div style={{ borderTop: '1px solid rgba(255,255,255,0.06)', paddingTop: '24px' }}>
-                <div style={{ color: '#F5F0E8', fontWeight: 600, fontSize: '15px' }}>{t.name}</div>
-                <div style={{ color: '#C9A84C', fontSize: '12px', letterSpacing: '0.05em', marginTop: '4px' }}>{t.title}</div>
-              </div>
-            </motion.div>
+    <section className="section section-linen" id="benefits">
+      <div className="container">
+        <FadeUp>
+          <div className="section-header">
+            <div className="section-eyebrow"><span className="gold-line-sm"/>Why Join<span className="gold-line-sm"/></div>
+            <h2>An <span className="gold-text">Exceptional Package</span></h2>
+            <p>Working at a Royal Palace in Saudi Arabia offers rewards that go far beyond any standard hospitality role.</p>
+          </div>
+        </FadeUp>
+        <div className="benefits-grid">
+          {benefits.map((b, i) => (
+            <BenefitCard key={b.title} b={b} i={i} />
           ))}
         </div>
       </div>

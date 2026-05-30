@@ -1,3 +1,4 @@
+import { motion, useScroll, useTransform } from 'framer-motion';
 import { useRef } from 'react';
 import HeroSlideshow from './HeroSlideshow';
 import { useMagnetic } from '../hooks/useMagnetic';
@@ -33,29 +34,35 @@ function MagneticBtn({ href, className, children }) {
 }
 
 export default function Hero() {
-  const ref = useRef(null);
-  const { scrollYProgress } = useScroll({ target: ref, offset: ['start start', 'end start'] });
-  const y1 = useTransform(scrollYProgress, [0, 1], ['0%', '30%']);
-  const opacity = useTransform(scrollYProgress, [0, 0.6], [1, 0]);
+  const sectionRef = useRef(null);
+  const { scrollYProgress } = useScroll({
+    target: sectionRef,
+    offset: ['start start', 'end start'],
+  });
 
   const yEyebrow = useTransform(scrollYProgress, [0, 1], [0, -55]);
   const yTitle   = useTransform(scrollYProgress, [0, 1], [0, -110]);
   const ySub     = useTransform(scrollYProgress, [0, 1], [0, -80]);
   const yCtas    = useTransform(scrollYProgress, [0, 1], [0, -65]);
   const yStats   = useTransform(scrollYProgress, [0, 1], [0, -45]);
-  const opacity  = useTransform(scrollYProgress, [0, 0.55], [1, 0]);
+  const scrollOpacity = useTransform(scrollYProgress, [0, 0.55], [1, 0]);
 
   return (
-    <section ref={ref} id="home" style={{ minHeight: '100vh', background: 'linear-gradient(160deg, #03060D 0%, #060B18 40%, #0A1628 70%, #060B18 100%)', display: 'flex', alignItems: 'center', position: 'relative', overflow: 'hidden', paddingTop: '80px' }}>
+    <section className="hero" id="hero" ref={sectionRef}>
+      <HeroSlideshow />
 
-      {/* Dot grid background */}
-      <div className="dot-grid" style={{ position: 'absolute', inset: 0, opacity: 0.5 }} />
+      <div className="hero-inner">
+        <motion.div className="hero-content" variants={container} initial="hidden" animate="visible">
 
-      {/* Radial glow center */}
-      <div style={{ position: 'absolute', top: '50%', left: '50%', transform: 'translate(-50%,-50%)', width: '800px', height: '800px', background: 'radial-gradient(circle, rgba(201,168,76,0.06) 0%, transparent 70%)', pointerEvents: 'none' }} />
+          <motion.div className="hero-eyebrow" variants={item} style={{ y: yEyebrow }}>
+            <span className="gold-line" />
+            Exclusive Royal Palace &nbsp;·&nbsp; Kingdom of Saudi Arabia
+            <span className="gold-line" />
+          </motion.div>
 
-      {/* Cyan accent glow bottom right */}
-      <div style={{ position: 'absolute', bottom: '-100px', right: '-100px', width: '600px', height: '600px', background: 'radial-gradient(circle, rgba(0,212,255,0.08) 0%, transparent 70%)', pointerEvents: 'none' }} />
+          <motion.h1 className="hero-title" variants={item} style={{ y: yTitle }}>
+            Where <em>Exceptional</em> Talent<br />Meets Royal Excellence
+          </motion.h1>
 
           <motion.p className="hero-sub" variants={item} style={{ y: ySub }}>
             Direct Recruitment &amp; Headhunting is exclusively retained to place
@@ -87,21 +94,17 @@ export default function Hero() {
             ))}
           </motion.div>
 
-        <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.8 }}
-          style={{ display: 'inline-flex', alignItems: 'center', gap: '10px', padding: '8px 20px', background: 'rgba(201,168,76,0.1)', border: '1px solid rgba(201,168,76,0.3)', borderRadius: '100px', marginBottom: '40px' }}
-        >
-          <span style={{ width: '6px', height: '6px', borderRadius: '50%', background: '#C9A84C', boxShadow: '0 0 8px #C9A84C', display: 'inline-block' }} />
-          <span style={{ color: '#C9A84C', fontSize: '11px', letterSpacing: '0.2em', textTransform: 'uppercase', fontWeight: 600 }}>Premium Hospitality Recruitment</span>
         </motion.div>
+      </div>
 
       <motion.div
         className="hero-scroll-hint"
         animate={{ y: [0, 8, 0] }}
         transition={{ duration: 2.2, repeat: Infinity, ease: 'easeInOut' }}
-        style={{ opacity }}
+        style={{ opacity: scrollOpacity }}
       >
-        <span style={{ fontSize: '10px', letterSpacing: '0.2em', color: '#C9A84C', textTransform: 'uppercase' }}>Scroll</span>
-        <svg width="20" height="20" fill="none" stroke="#C9A84C" strokeWidth="2" viewBox="0 0 24 24"><path d="M12 5v14M5 12l7 7 7-7"/></svg>
+        <div className="scroll-line" />
+        <span>Scroll</span>
       </motion.div>
     </section>
   );
