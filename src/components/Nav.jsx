@@ -50,7 +50,7 @@ export default function Nav() {
           whileHover={{ scale: 1.03 }}
           transition={{ type: 'spring', stiffness: 300 }}
         >
-          <img src={`${import.meta.env.BASE_URL}logo.png`} alt="Direct Recruiting & Headhunting" />
+          <img src={`${import.meta.env.BASE_URL}logo.svg`} alt="Direct Recruiting & Headhunting" />
         </motion.a>
 
         <ul className="nav-links">
